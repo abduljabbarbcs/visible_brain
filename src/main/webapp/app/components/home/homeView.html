@@ -1,0 +1,43 @@
+<div class="row custom-row" ng-repeat="slide in slides" ng-if="$index % 2 == 0">
+    <div class="col-md-3 custum-col" ng-if="slides.length > $index">
+        <div class="card center" data-ng-click="redirect(slides[$index].id)">
+            <img class="card-img-bottom image-wrap"  src="/assets/img/{{slides[$index].slidePath}}.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-md-3" ng-if="slides.length > $index">
+        <div class="card">
+            <div class="card-block">
+                <select ng-model="editS.edit" class="home-select" ng-show="editS.edit===''">
+                    <option value="true">Edit</option>
+                </select>
+                <a data-ng-click="cancel()" ng-show="editS.edit==='true'" class="home-select"><i class="fa fa-times fa-lg"></i></a>
+                <a data-ng-click="editSlide(slides[$index])" ng-show="editS.edit==='true'" class="home-select margin-right-check"><i class="fa fa-check fa-lg"></i></a>
+                <h4 class="card-title"  ng-show="editS.edit==='true'"> <input type="text"  class="home-input" placeholder="e.g. first name"  ng-model="slides[$index].name"></h4>
+                <p class="card-text" ng-show="editS.edit==='true'"><textarea ng-model="slides[$index].description" class="textArea"></textarea></p>
+                <h4 class="card-title" ng-hide="editS.edit==='true'">{{slides[$index].name}}</h4>
+                <p class="card-text" ng-hide="editS.edit==='true'">{{ slides[$index].description | limitTo: 200 }}{{slides[$index].description.length > 200 ? '...' : ''}}</p>
+            </div>
+        </div>
+    </div>
+        <div class="col-md-3 custum-col"ng-if="slides.length > ($index+1)">
+        <div class="card center" data-ng-click="redirect(slides[$index+1].id)">
+            <img class="card-img-bottom image-wrap"  class="image-wrap" src="/assets/img/{{slides[$index+1].slidePath}}.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="col-md-3" ng-if="slides.length > ($index+1)">
+        <div class="card">
+            <div class="card-block">
+                <select ng-model="editS.edit" class="home-select" ng-show="editS.edit===''">
+                    <option value="true">Edit</option>
+                </select>
+                <a data-ng-click="cancel()" ng-show="editS.edit==='true'" class="home-select"><i class="fa fa-times fa-lg"></i></a>
+                <a data-ng-click="editSlide(slides[$index+1])" ng-show="editS.edit==='true'" class="home-select margin-right-check"><i class="fa fa-check fa-lg"></i></a>
+                <h4 class="card-title" ng-show="editS.edit==='true'"> <input type="text"  class="home-input" placeholder="e.g. first name"  ng-model="slides[$index+1].name"></h4>
+                <p class="card-text" ng-show="editS.edit==='true'"><textarea ng-model="slides[$index+1].description" class="textArea"></textarea></p>
+                <h4 class="card-title" ng-hide="editS.edit==='true'">{{slides[$index+1].name}}</h4>
+                <p class="card-text" ng-hide="editS.edit==='true'">{{ slides[$index+1].description | limitTo: 200 }}{{slides[$index+1].description.length > 200 ? '...' : ''}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

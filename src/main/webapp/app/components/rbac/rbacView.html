@@ -1,0 +1,100 @@
+<div class="container">
+    <h2>Users</h2>
+    <select ng-model="status" class="status-selection">
+        <option value="true">Active</option>
+        <option value="false">Disable</option>
+    </select>
+    <hr class="seperator"/>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Role</th>
+            <th class="text-align-right"><a href="" data-toggle="modal" data-target="#addUser"><i class="fa fa-plus-circle  fa-lg"></i></a></th>
+        </tr>
+        </thead>
+        <tbody class="c-overflow">
+        <tr ng-repeat="user in users| filter:{active:status}">
+            <td>{{user.email}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.role}}</td>
+            <td class="text-align-center" ng-show="status === 'true'">
+                <a data-ng-click="editUsers(user)"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+                <a class="float-right" data-ng-click="deleteUser(user.id)"><i class="fa fa-trash fa-lg"></i></a>
+            </td>
+            <td  class="text-align-right" ng-hide="status === 'true'">
+               <a data-ng-click="resendActivation(user)"> Resend Activation </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="addUser" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" data-ng-click="resetUser();">&times;</button>
+                <h4 class="modal-title">{{dialogTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="assignErrorMsg" ng-show="isError == true" class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" ng-click="closeError()" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    {{errorMsg}}
+                </div>
+                    <div class="row margin-top-dialog">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3 text-align-center">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" placeholder="e.g. abc@gmail.com" class="dialog-input" ng-model="curUser.email" id="userId">
+                        </div>
+
+                    </div>
+                <div class="spinner" ng-hide="loaded"></div>
+                    <div class="row margin-top-dialog">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3 text-align-center">
+                            <label>Role</label>
+                        </div>
+                        <div class="col-md-7">
+                            <select ng-model="curUser.role" class="dialog-input">
+                                <option value="#NONE#">- Select Role -</option>
+                                <option value="ROLE_USER">USER</option>
+                                <option value="ROLE_ADMIN">ADMIN</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row margin-top-dialog">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3 text-align-center">
+                            <label>First Name</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text"  class="dialog-input" placeholder="e.g. first name"  ng-model="curUser.firstName">
+                        </div>
+                    </div>
+                    <div class="row margin-top-dialog">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3 text-align-center">
+                            <label>Last Name</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" class="dialog-input" placeholder="e.g. last name"   ng-model="curUser.lastName"/>
+                        </div>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-ng-click="saveUser();">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"data-ng-click="resetUser();">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</div>

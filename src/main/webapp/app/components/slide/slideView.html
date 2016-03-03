@@ -1,0 +1,53 @@
+<div>
+    <div class="sitesView" id="chat-trigger" data-trigger="#chat">
+        <a href="#chat"></a>
+    </div>
+    <aside id="chat">
+        <div class="sidebar-header">
+            <h4>{{slide.name}}</h4>
+        </div>
+        <hr class="custom-line">
+        <div class="tree well">
+            <ul>
+                <li>
+                    <span><i class="fa fa-folder-open"></i></span><label class="margin-left-label">{{slide.name}}</label>
+                    <ul>
+                        <li data-ng-repeat="overlayInfo in slide.overlayInfos">
+                            <span><i class="fa fa-file-image-o"></i></span> <label class="margin-left-label">{{overlayInfo.name}}</label>
+                        </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </aside>
+    <div class="card custom-card">
+        <!--<div class="card-header">-->
+            <!--<a class="float-right margin-right-slide"><i class="fa fa-pencil-square-o fa-3x"></i></a>-->
+            <!--<a class="float-right margin-right-slide"><i class="fa fa-arrows-alt fa-3x"></i></a>-->
+            <!--<a class="float-right margin-right-slide"><i class="fa fa-home fa-3x"></i></a>-->
+            <!--<a class="float-right margin-right-slide"><i class="fa fa-minus-circle fa-3x"></i></a>-->
+            <!--<a class="float-right margin-right-slide"><i class="fa fa-plus-circle fa-3x"></i></a>-->
+        <!--</div>-->
+        <div class="card-block custom-card-block image-wrap">
+            <div>
+                <a class="float-right" id="add"><i class="fa fa-pencil-square-o fa-3x"></i></a>
+            </div>
+            <div data-ng-click="redirect(slides[$index+1].id)" class="image-wrap" id="container">
+                <div id="navi" class="openseadragon1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<div>-->
+    <!--<div id="container">-->
+        <!--<div id="navi" class="openseadragon1"></div>-->
+        <!--&lt;!&ndash; <div id="infoi"></div> &ndash;&gt;-->
+        <!--<input type="button" id="add" value="add" style="margin-top:50px" />-->
+        <!--<input type="button" id="remove" value="remove" style="margin-top:100px" />-->
+    <!--</div>-->
+<!--</div>-->
