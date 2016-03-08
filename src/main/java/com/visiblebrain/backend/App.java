@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -21,11 +23,17 @@ import java.util.Map;
 @SpringBootApplication
 @EnableSwagger2
  @Controller
-public class App {
+public class App extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(App.class);
+    }
     public static Logger log = Logger.getLogger(App.class.getName());
     public static void main(String [] args){
         SpringApplication.run(App.class, args);
     }
+
     
     public Docket visibleBrainApi(){
     	return new Docket(DocumentationType.SWAGGER_2)
