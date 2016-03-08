@@ -1,4 +1,8 @@
-<div class="row custom-row" ng-repeat="slide in slides" ng-if="$index % 2 == 0">
+<div>
+    <h2>MicroScopic Slides</h2>
+</div>
+<div class="row" ng-repeat="slide in slides" ng-if="$index % 2 == 0">
+    <hr/>
     <div class="col-md-3 custum-col" ng-if="slides.length > $index">
         <div class="card center" data-ng-click="redirect(slides[$index].id)">
             <img class="card-img-bottom image-wrap"  src="/assets/img/{{slides[$index].slidePath}}.jpg" alt="Card image cap">
@@ -39,5 +43,6 @@
             </div>
         </div>
     </div>
+
 
 </div>
