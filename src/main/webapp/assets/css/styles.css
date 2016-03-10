@@ -232,7 +232,20 @@ footer {
 .custom-card{
     height:550px;
 }
+.custom-height-absolute{
+    position:absolute;
+    height:100%;
+    width:100%;
+}
 
+.custom-height-relative{
+    position:relative;
+    height:100%;
+    width:100%;
+}
+.custom-height{
+    height:95% !important;
+}
 //testing
 .openseadragon1 {
     width: 100%;
@@ -244,6 +257,9 @@ footer {
   width: 100%;
   height: 100%;
   position: relative;
+}
+.custom-cursor{
+    cursor: pointer;
 }
 #navi,
 #infoi {
@@ -457,3 +473,4 @@ padding:0px;
     margin-left:5px;
 }
 //treeView end
+
