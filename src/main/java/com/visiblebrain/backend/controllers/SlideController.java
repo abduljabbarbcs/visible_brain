@@ -37,6 +37,13 @@ public class SlideController {
         return slideService.getAllSlides();
     }
 
+//    @RequestMapping(value="/getSlide",method = RequestMethod.GET)
+//    @ResponseBody
+//    public Slide getImage(@PathVariable Slide slide) {
+//        private long id = s
+//        return slideService.getSlideById();
+//    }
+
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Slide getByID(@PathVariable("id") Long id) {

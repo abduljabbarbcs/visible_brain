@@ -79,4 +79,18 @@ public class OverlayInfo extends BaseEntity{
     public void setDescription(String description) {
         this.description = description;
     }
+
+//    public Image getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(Image image) {
+//        this.image = image;
+//    }
+//
+//    @ManyToOne(optional = false)
+//    @JoinColumn(name = "Images", referencedColumnName = "id")
+//    @RestResource(exported = false)
+//    @JsonBackReference
+//    private Image image;
 }

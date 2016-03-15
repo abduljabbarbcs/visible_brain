@@ -26,12 +26,14 @@ public class OverlayInfoServiceImpl implements OverlayInfoService {
     private final SlideRepository slideRepository;
     private final OverlayInfoRepository overlayInfoRepository;
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @Autowired
-    public OverlayInfoServiceImpl(OverlayInfoRepository overlayInfoRepository,SlideRepository slideRepository,UserService userService) {
+    public OverlayInfoServiceImpl(OverlayInfoRepository overlayInfoRepository,SlideRepository slideRepository,UserService userService,UserRepository userRepository) {
         this.slideRepository = slideRepository;
         this.overlayInfoRepository = overlayInfoRepository;
         this.userService=userService;
+        this.userRepository = userRepository;
 
     }
 
@@ -63,7 +65,13 @@ public class OverlayInfoServiceImpl implements OverlayInfoService {
             overlayInfo.setOverlayInfo(overlayInfoRepository.findOne((form.getOverlayInfo().getId())));
         }
         overlayInfo.setSlide(slideRepository.findOne(form.getSlide().getId()));
-        overlayInfo.setUser(userService.getLoggedInUser());
+        if(userService.getLoggedInUser() == null)
+        {
+            overlayInfo.setUser(userRepository.findOne((long)1));
+        }
+        else {
+            overlayInfo.setUser(userService.getLoggedInUser());
+        }
         overlayInfo.setOverlayPoints(form.getOverlayPoints());
         OverlayInfo savedOverlay = overlayInfoRepository.save(overlayInfo);
         return savedOverlay;

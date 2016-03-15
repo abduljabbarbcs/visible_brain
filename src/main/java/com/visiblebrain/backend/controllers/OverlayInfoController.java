@@ -1,6 +1,8 @@
 package com.visiblebrain.backend.controllers;
 
 import com.visiblebrain.backend.model.OverlayInfo;
+import com.visiblebrain.backend.model.Slide;
+import com.visiblebrain.backend.repository.SlideRepository;
 import com.visiblebrain.backend.service.overlayInfo.OverlayInfoService;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
@@ -20,15 +22,23 @@ import java.util.Collection;
 public class OverlayInfoController {
     private static final Logger LOGGER = LoggerFactory.getLogger(OverlayInfoController.class);
     private final OverlayInfoService overlayInfoService;
-
+    private final SlideRepository slideRepository;
     @Autowired
-    public OverlayInfoController(OverlayInfoService overlayInfoService) {
+    public OverlayInfoController(OverlayInfoService overlayInfoService,SlideRepository slideRepository) {
         this.overlayInfoService = overlayInfoService;
+        this.slideRepository = slideRepository;
     }
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public Collection<OverlayInfo> getAll() {
         return overlayInfoService.getAllOverlays();
+    }
+
+    @RequestMapping(value="/{type}/{slidePath}",method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<OverlayInfo> getOverlay(@PathVariable("type") String type,@PathVariable("slidePath") String slidePath) {
+        Slide slide=slideRepository.getSlideByTypeAndSlidePath(type,slidePath);
+        return overlayInfoService.getOverlaysBySlideId(slide.getId());
     }
 
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
@@ -41,6 +51,15 @@ public class OverlayInfoController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public OverlayInfo create(@RequestBody OverlayInfo o) {
+        return overlayInfoService.create(o);
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @RequestMapping(value="/save" ,method = RequestMethod.POST)
+    @ResponseBody
+    public OverlayInfo save(@RequestBody OverlayInfo o) {
+        Slide slide=slideRepository.getSlideByTypeAndSlidePath(o.getSlide().getType(),o.getSlide().getSlidePath());
+        o.setSlide(slide);
         return overlayInfoService.create(o);
     }
 

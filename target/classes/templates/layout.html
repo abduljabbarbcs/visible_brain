@@ -36,7 +36,7 @@
 
     <div class="container-fluid">
 
-        <div class="row row-offcanvas row-offcanvas-left">
+        <div class="row row-offcanvas row-offcanvas-left custom-height-absolute custom-height">
 
             <!--<div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">-->
 
@@ -47,16 +47,16 @@
             <!--</div>-->
             <!--/span-->
 
-            <div class="col-sm-12 col-md-12 main">
+            <div class="col-sm-12 col-md-12 main custom-height-absolute custom-height">
 
                 <!--toggle sidebar button-->
-                <p class="visible-xs">
+                <p class="visible-xs custom-opacity">
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">
                         <i class="glyphicon glyphicon-chevron-left"></i>
                     </button>
                 </p>
 
-                <div layout:fragment="content" class="content-fragment">
+                <div layout:fragment="content" class="content-fragment custom-height-relative">
                     <!-- CONTENT GOES HERE -->
                 </div>
 

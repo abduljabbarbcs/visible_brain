@@ -46,7 +46,7 @@ public class SlideServiceImpl implements SlideService {
     @Override
     public Collection<Slide> getAllSlides() {
         LOGGER.debug("Getting all users");
-        return slideRepository.getSlidesByActive(true);
+        return slideRepository.getSlidesByActiveAndType(true,"slide");
     }
 
     @Transactional

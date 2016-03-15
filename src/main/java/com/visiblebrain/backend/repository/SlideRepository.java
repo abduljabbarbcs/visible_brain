@@ -12,6 +12,7 @@ import java.util.Collection;
  */
 @Transactional
 public interface SlideRepository extends JpaRepository<Slide, Long> {
-    Collection<Slide> getSlidesByActive(Boolean active);
+    Collection<Slide> getSlidesByActiveAndType(Boolean active,String type);
     Slide getSlideByIdAndActive(Long id,Boolean active);
+    Slide getSlideByTypeAndSlidePath(String type ,String slidePath);
 }
