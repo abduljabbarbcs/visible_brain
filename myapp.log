@@ -13095,3 +13095,211 @@ java.sql.SQLException: Access denied for user 'root'@'localhost' (using password
 2016-03-15 20:00:24.648  INFO 3416 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getOverlay was overlay-info-controller
 2016-03-15 20:00:24.887  INFO 3416 --- [main] com.visiblebrain.backend.App             : Started App in 42.068 seconds (JVM running for 44.12)
 2016-03-15 20:00:52.957  INFO 3416 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-03-15 21:16:49.781  INFO 8048 --- [main] com.visiblebrain.backend.App             : Starting App on Personal with PID 8048 (E:\GITHUB\visible_brain\target\classes started by Abdul Jabbar in E:\GITHUB\visible_brain)
+2016-03-15 21:16:49.790  INFO 8048 --- [main] com.visiblebrain.backend.App             : No active profile set, falling back to default profiles: default
+2016-03-15 21:17:03.634  INFO 8048 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2016-03-15 21:17:03.636  INFO 8048 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.0.30
+2016-03-15 21:17:03.966  INFO 8048 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2016-03-15 21:17:21.094  INFO 8048 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2016-03-15 21:17:21.159  INFO 8048 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found {0} custom documentation plugin(s)
+2016-03-15 21:17:21.172  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2016-03-15 21:17:21.193  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method home was app
+2016-03-15 21:17:21.196  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: home belongs to groups: [[ResourceGroup{groupName='app', position=0, controller=com.visiblebrain.backend.App}]] 
+2016-03-15 21:17:21.197  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method create was overlay-info-controller
+2016-03-15 21:17:21.198  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: create belongs to groups: [[ResourceGroup{groupName='overlay-info-controller', position=0, controller=com.visiblebrain.backend.controllers.OverlayInfoController}]] 
+2016-03-15 21:17:21.198  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method save was overlay-info-controller
+2016-03-15 21:17:21.198  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: save belongs to groups: [[ResourceGroup{groupName='overlay-info-controller', position=0, controller=com.visiblebrain.backend.controllers.OverlayInfoController}]] 
+2016-03-15 21:17:21.203  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method delete was overlay-info-controller
+2016-03-15 21:17:21.206  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: delete belongs to groups: [[ResourceGroup{groupName='overlay-info-controller', position=0, controller=com.visiblebrain.backend.controllers.OverlayInfoController}]] 
+2016-03-15 21:17:21.207  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method update was overlay-info-controller
+2016-03-15 21:17:21.207  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: update belongs to groups: [[ResourceGroup{groupName='overlay-info-controller', position=0, controller=com.visiblebrain.backend.controllers.OverlayInfoController}]] 
+2016-03-15 21:17:21.208  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was overlay-info-controller
+2016-03-15 21:17:21.208  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: getAll belongs to groups: [[ResourceGroup{groupName='overlay-info-controller', position=0, controller=com.visiblebrain.backend.controllers.OverlayInfoController}]] 
+2016-03-15 21:17:21.208  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getByID was overlay-info-controller
+2016-03-15 21:17:21.209  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: getByID belongs to groups: [[ResourceGroup{groupName='overlay-info-controller', position=0, controller=com.visiblebrain.backend.controllers.OverlayInfoController}]] 
+2016-03-15 21:17:21.209  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getOverlay was overlay-info-controller
+2016-03-15 21:17:21.209  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: getOverlay belongs to groups: [[ResourceGroup{groupName='overlay-info-controller', position=0, controller=com.visiblebrain.backend.controllers.OverlayInfoController}]] 
+2016-03-15 21:17:21.210  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method create was slide-controller
+2016-03-15 21:17:21.210  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: create belongs to groups: [[ResourceGroup{groupName='slide-controller', position=0, controller=com.visiblebrain.backend.controllers.SlideController}]] 
+2016-03-15 21:17:21.211  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method delete was slide-controller
+2016-03-15 21:17:21.211  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: delete belongs to groups: [[ResourceGroup{groupName='slide-controller', position=0, controller=com.visiblebrain.backend.controllers.SlideController}]] 
+2016-03-15 21:17:21.211  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method update was slide-controller
+2016-03-15 21:17:21.211  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: update belongs to groups: [[ResourceGroup{groupName='slide-controller', position=0, controller=com.visiblebrain.backend.controllers.SlideController}]] 
+2016-03-15 21:17:21.212  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was slide-controller
+2016-03-15 21:17:21.212  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: getAll belongs to groups: [[ResourceGroup{groupName='slide-controller', position=0, controller=com.visiblebrain.backend.controllers.SlideController}]] 
+2016-03-15 21:17:21.212  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getByID was slide-controller
+2016-03-15 21:17:21.213  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: getByID belongs to groups: [[ResourceGroup{groupName='slide-controller', position=0, controller=com.visiblebrain.backend.controllers.SlideController}]] 
+2016-03-15 21:17:21.213  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method register was user-controller
+2016-03-15 21:17:21.213  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: register belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.214  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method delete was user-controller
+2016-03-15 21:17:21.214  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: delete belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.215  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChange was user-controller
+2016-03-15 21:17:21.215  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: resetPasswordChange belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.215  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method profilePicture was user-controller
+2016-03-15 21:17:21.215  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: profilePicture belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.216  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPost was user-controller
+2016-03-15 21:17:21.216  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: resetPasswordEmailPost belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.217  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSendPost was user-controller
+2016-03-15 21:17:21.217  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: activationSendPost belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.217  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method handleFileUpload was user-controller
+2016-03-15 21:17:21.217  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: handleFileUpload belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.218  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmail was user-controller
+2016-03-15 21:17:21.218  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: resetPasswordEmail belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.219  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSend was user-controller
+2016-03-15 21:17:21.219  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: activationSend belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.219  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPostLogin was user-controller
+2016-03-15 21:17:21.219  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: resetPasswordEmailPostLogin belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.220  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChangePost was user-controller
+2016-03-15 21:17:21.220  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: resetPasswordChangePost belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.223  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was user-controller
+2016-03-15 21:17:21.223  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: getAll belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.226  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method autoLogin was user-controller
+2016-03-15 21:17:21.226  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: autoLogin belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.228  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method registerPost was user-controller
+2016-03-15 21:17:21.228  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: registerPost belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.231  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method editPost was user-controller
+2016-03-15 21:17:21.231  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: editPost belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.232  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activate was user-controller
+2016-03-15 21:17:21.232  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: activate belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.232  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method checkLogin was user-controller
+2016-03-15 21:17:21.232  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: checkLogin belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.233  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method edit was user-controller
+2016-03-15 21:17:21.233  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: edit belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.234  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method login was user-controller
+2016-03-15 21:17:21.234  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: login belongs to groups: [[ResourceGroup{groupName='user-controller', position=0, controller=com.visiblebrain.backend.controllers.UserController}]] 
+2016-03-15 21:17:21.234  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2016-03-15 21:17:21.235  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: error belongs to groups: [[ResourceGroup{groupName='basic-error-controller', position=0, controller=org.springframework.boot.autoconfigure.web.BasicErrorController}]] 
+2016-03-15 21:17:21.235  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2016-03-15 21:17:21.235  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Request mapping: errorHtml belongs to groups: [[ResourceGroup{groupName='basic-error-controller', position=0, controller=org.springframework.boot.autoconfigure.web.BasicErrorController}]] 
+2016-03-15 21:17:21.243  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /default/basic-error-controller Description: basic-error-controller Position: 0
+2016-03-15 21:17:21.244  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /default/overlay-info-controller Description: overlay-info-controller Position: 0
+2016-03-15 21:17:21.245  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /default/slide-controller Description: slide-controller Position: 0
+2016-03-15 21:17:21.246  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /default/app Description: app Position: 0
+2016-03-15 21:17:21.246  INFO 8048 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Created resource listing Path: /default/user-controller Description: user-controller Position: 0
+2016-03-15 21:17:21.286  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2016-03-15 21:17:21.296  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2016-03-15 21:17:21.300  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2016-03-15 21:17:21.304  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2016-03-15 21:17:21.312  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2016-03-15 21:17:21.319  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2016-03-15 21:17:21.322  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2016-03-15 21:17:21.325  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method error was basic-error-controller
+2016-03-15 21:17:21.468  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2016-03-15 21:17:21.471  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2016-03-15 21:17:21.480  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2016-03-15 21:17:21.484  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2016-03-15 21:17:21.487  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2016-03-15 21:17:21.491  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2016-03-15 21:17:21.494  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2016-03-15 21:17:21.496  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method errorHtml was basic-error-controller
+2016-03-15 21:17:22.587  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method create was overlay-info-controller
+2016-03-15 21:17:23.364  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method save was overlay-info-controller
+2016-03-15 21:17:23.370  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method delete was overlay-info-controller
+2016-03-15 21:17:23.955  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method update was overlay-info-controller
+2016-03-15 21:17:24.128  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was overlay-info-controller
+2016-03-15 21:17:24.248  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getByID was overlay-info-controller
+2016-03-15 21:17:24.378  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getOverlay was overlay-info-controller
+2016-03-15 21:17:25.001  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method create was slide-controller
+2016-03-15 21:17:25.016  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method delete was slide-controller
+2016-03-15 21:17:25.271  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method update was slide-controller
+2016-03-15 21:17:25.433  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was slide-controller
+2016-03-15 21:17:25.563  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getByID was slide-controller
+2016-03-15 21:17:25.569  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method home was app
+2016-03-15 21:17:25.571  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method home was app
+2016-03-15 21:17:25.573  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method home was app
+2016-03-15 21:17:25.575  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method home was app
+2016-03-15 21:17:25.577  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method home was app
+2016-03-15 21:17:25.580  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method home was app
+2016-03-15 21:17:25.583  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method home was app
+2016-03-15 21:17:25.585  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method home was app
+2016-03-15 21:17:25.628  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method register was user-controller
+2016-03-15 21:17:25.960  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method delete was user-controller
+2016-03-15 21:17:25.980  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChange was user-controller
+2016-03-15 21:17:25.993  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChange was user-controller
+2016-03-15 21:17:26.000  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChange was user-controller
+2016-03-15 21:17:26.057  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChange was user-controller
+2016-03-15 21:17:26.104  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChange was user-controller
+2016-03-15 21:17:26.112  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChange was user-controller
+2016-03-15 21:17:26.120  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChange was user-controller
+2016-03-15 21:17:26.127  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChange was user-controller
+2016-03-15 21:17:26.755  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method profilePicture was user-controller
+2016-03-15 21:17:26.760  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPost was user-controller
+2016-03-15 21:17:26.776  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSendPost was user-controller
+2016-03-15 21:17:26.782  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method handleFileUpload was user-controller
+2016-03-15 21:17:26.799  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmail was user-controller
+2016-03-15 21:17:26.805  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmail was user-controller
+2016-03-15 21:17:26.811  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmail was user-controller
+2016-03-15 21:17:26.816  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmail was user-controller
+2016-03-15 21:17:26.821  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmail was user-controller
+2016-03-15 21:17:26.825  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmail was user-controller
+2016-03-15 21:17:26.828  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmail was user-controller
+2016-03-15 21:17:26.834  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmail was user-controller
+2016-03-15 21:17:26.904  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSend was user-controller
+2016-03-15 21:17:26.908  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSend was user-controller
+2016-03-15 21:17:26.913  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSend was user-controller
+2016-03-15 21:17:26.917  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSend was user-controller
+2016-03-15 21:17:26.923  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSend was user-controller
+2016-03-15 21:17:27.049  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSend was user-controller
+2016-03-15 21:17:27.053  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSend was user-controller
+2016-03-15 21:17:27.057  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activationSend was user-controller
+2016-03-15 21:17:27.062  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPostLogin was user-controller
+2016-03-15 21:17:27.068  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPostLogin was user-controller
+2016-03-15 21:17:27.073  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPostLogin was user-controller
+2016-03-15 21:17:27.081  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPostLogin was user-controller
+2016-03-15 21:17:27.087  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPostLogin was user-controller
+2016-03-15 21:17:27.148  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPostLogin was user-controller
+2016-03-15 21:17:27.154  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPostLogin was user-controller
+2016-03-15 21:17:27.159  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordEmailPostLogin was user-controller
+2016-03-15 21:17:27.214  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method resetPasswordChangePost was user-controller
+2016-03-15 21:17:27.264  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was user-controller
+2016-03-15 21:17:27.266  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was user-controller
+2016-03-15 21:17:27.271  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was user-controller
+2016-03-15 21:17:27.273  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was user-controller
+2016-03-15 21:17:27.285  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was user-controller
+2016-03-15 21:17:27.289  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was user-controller
+2016-03-15 21:17:27.292  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was user-controller
+2016-03-15 21:17:27.298  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method getAll was user-controller
+2016-03-15 21:17:27.302  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method autoLogin was user-controller
+2016-03-15 21:17:27.316  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method autoLogin was user-controller
+2016-03-15 21:17:27.319  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method autoLogin was user-controller
+2016-03-15 21:17:27.325  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method autoLogin was user-controller
+2016-03-15 21:17:27.329  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method autoLogin was user-controller
+2016-03-15 21:17:27.333  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method autoLogin was user-controller
+2016-03-15 21:17:27.336  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method autoLogin was user-controller
+2016-03-15 21:17:27.339  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method autoLogin was user-controller
+2016-03-15 21:17:27.375  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method registerPost was user-controller
+2016-03-15 21:17:27.387  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method editPost was user-controller
+2016-03-15 21:17:27.397  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activate was user-controller
+2016-03-15 21:17:27.400  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activate was user-controller
+2016-03-15 21:17:27.402  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activate was user-controller
+2016-03-15 21:17:27.406  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activate was user-controller
+2016-03-15 21:17:27.409  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activate was user-controller
+2016-03-15 21:17:27.412  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activate was user-controller
+2016-03-15 21:17:27.415  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activate was user-controller
+2016-03-15 21:17:27.419  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method activate was user-controller
+2016-03-15 21:17:27.453  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method checkLogin was user-controller
+2016-03-15 21:17:27.455  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method checkLogin was user-controller
+2016-03-15 21:17:27.457  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method checkLogin was user-controller
+2016-03-15 21:17:27.459  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method checkLogin was user-controller
+2016-03-15 21:17:27.461  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method checkLogin was user-controller
+2016-03-15 21:17:27.463  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method checkLogin was user-controller
+2016-03-15 21:17:27.464  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method checkLogin was user-controller
+2016-03-15 21:17:27.468  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method checkLogin was user-controller
+2016-03-15 21:17:27.478  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method edit was user-controller
+2016-03-15 21:17:27.482  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method edit was user-controller
+2016-03-15 21:17:27.486  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method edit was user-controller
+2016-03-15 21:17:27.493  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method edit was user-controller
+2016-03-15 21:17:27.497  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method edit was user-controller
+2016-03-15 21:17:27.502  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method edit was user-controller
+2016-03-15 21:17:27.509  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method edit was user-controller
+2016-03-15 21:17:27.525  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method edit was user-controller
+2016-03-15 21:17:27.552  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method login was user-controller
+2016-03-15 21:17:27.559  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method login was user-controller
+2016-03-15 21:17:27.565  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method login was user-controller
+2016-03-15 21:17:27.569  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method login was user-controller
+2016-03-15 21:17:27.572  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method login was user-controller
+2016-03-15 21:17:27.576  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method login was user-controller
+2016-03-15 21:17:27.578  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method login was user-controller
+2016-03-15 21:17:27.583  INFO 8048 --- [main] s.w.ClassOrApiAnnotationResourceGrouping : Group for method login was user-controller
+2016-03-15 21:17:27.758  INFO 8048 --- [main] com.visiblebrain.backend.App             : Started App in 39.911 seconds (JVM running for 42.334)
+2016-03-15 21:17:43.976  INFO 8048 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
