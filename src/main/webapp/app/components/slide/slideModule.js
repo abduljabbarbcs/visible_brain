@@ -17,8 +17,8 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
             App = {
                 save: function(dataPoints){
 
-                       var lineData = [ { "x": 1,   "y": 1},  { "x": 0.5,  "y": 1},                { "x": 1,  "y": 0.5}, { "x": 1,  "y": 0},                 { "x": 2,  "y": 1},  { "x": 1, "y": 3}];//This is the accessor function we talked about above
-                       var lineFunction = d3.svg.line().x(function(d) { return d.x; }).y(function(d) { return d.y; }).interpolate("basis");//The SVG Container
+//                       var lineData = [ { "x": 1,   "y": 1},{ "x": 0.5,  "y": 1},{ "x": 1,  "y": 0.5}, { "x": 1,  "y": 0},{ "x": 2,  "y": 1},  { "x": 1, "y": 3}];//This is the accessor function we talked about above
+//                       var lineFunction = d3.svg.line().x(function(d) { return d.x; }).y(function(d) { return d.y; }).interpolate("basis");//The SVG Container
                        var line = d3.svg.line()
                             .interpolate("basis");
                        var lineGraph = d3.select(overlay.node()).append("path")
@@ -31,6 +31,28 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                               .attr("d", line);
 
                 },
+//                convert: function(data){
+//                    for (var temp in data)
+//                    {
+//                    //;debugger
+//
+//                        var webPoint = new OpenSeadragon.Point(data[temp][0], data[temp][1]);
+//
+////                        console.log(webPoint);
+//                        var viewportPoint = this.viewer.viewport.pointFromPixel(webPoint,true);
+//
+//                        // Convert from viewport coordinates to image coordinates.
+//                        var imagePoint = this.viewer.viewport.viewportToImageCoordinates(viewportPoint);
+////                        data[temp][0]=imagePoint.x/4096;
+////                        data[temp][1]=imagePoint.y/3061;
+//
+//                        console.log(imagePoint.x);
+//                        // Show the results.
+//                        console.log(webPoint.toString(), viewportPoint.toString(), imagePoint.toString());
+//
+//                    }
+//                    return data;
+//                },
                 // ----------
                 init: function() {
                     self = this;
@@ -54,7 +76,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                         prefixUrl: "openseadragon/images/",
                         tileSources: [{
                             tileSource: tileSource,
-                            width: 2,
+                            width:2,
                             y: 0.5,
                             x: 0.5
                         }]
@@ -78,6 +100,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
             var iDiv = document.createElement('div');
             iDiv.id = 'infoi';
             data=[];
+             console.log("here",p.x,p.y,scale);
 //             iDiv.className = 'openseadragon1';
             document.getElementById('container').appendChild(iDiv);
                      // $('#contentDiv').prop('disabled',true);
@@ -101,10 +124,16 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                 });
                 svg.on("mousemove", function(){
                   if (drawObj.isDown){
+                    var height =$("#container").height()*13/100;
+                    var width = $("#container").width()*3/100;
+//                    console.log(height,width);
                     drawObj.dataPoints.push(
-                      [d3.event.x, d3.event.y]
+                      [d3.event.x-width, d3.event.y-height]
                     );
-                    data.push([d3.event.x/600, d3.event.y/300])
+//                    console.log(d3.event.x,d3.event.y);
+//                    console.log(d3.event.x,d3.event.y);
+                    data.push([(d3.event.x - p.x - width)/scale, (d3.event.y - p.y - height)/scale])
+//                      data.push([(d3.event.x + 425.823587063051 - width)/711.8823913753675, (d3.event.y + 621.9411956876835-height)/711.8823913753675])
                     if (!drawObj.currentPath){
                       drawObj.currentPath = svg.append("path")
                         .attr("class","currentPath")
@@ -118,8 +147,11 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                   }
                 });
                 svg.on("mouseup", function(){
+//                  console.log(data);
+//                  data = App.convert(data);
+//                  console.log(data)
                   App.save(data)
-                  console.log(data);
+//                  console.log(data);
                   drawObj.isDown = false;
                   drawObj.currentPath.attr("class","oldPath");
                   drawObj.dataPoints = [];

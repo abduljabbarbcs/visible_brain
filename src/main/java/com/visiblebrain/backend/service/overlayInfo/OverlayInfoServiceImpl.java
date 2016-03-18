@@ -60,9 +60,15 @@ public class OverlayInfoServiceImpl implements OverlayInfoService {
         OverlayInfo overlayInfo = new OverlayInfo();
         overlayInfo.setName(form.getName());
         overlayInfo.setDescription(form.getDescription());
-        if(form.getOverlayInfo().getId() > 0) {
-            System.out.println(form.getOverlayInfo().getId());
-            overlayInfo.setOverlayInfo(overlayInfoRepository.findOne((form.getOverlayInfo().getId())));
+        if(form.getOverlayInfo()!=null) {
+            if (form.getOverlayInfo().getId() > 0) {
+                System.out.println(form.getOverlayInfo().getId());
+                overlayInfo.setOverlayInfo(overlayInfoRepository.findOne((form.getOverlayInfo().getId())));
+            }
+        }
+        else
+        {
+            overlayInfo.setOverlayInfo(null);
         }
         overlayInfo.setSlide(slideRepository.findOne(form.getSlide().getId()));
         if(userService.getLoggedInUser() == null)

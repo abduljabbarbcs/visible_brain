@@ -68,10 +68,10 @@
                 this._svg.setAttribute('height', this._containerHeight);
             }
 
-            var p = this._viewer.viewport.pixelFromPoint(new OpenSeadragon.Point(0, 0), true);
+            p = this._viewer.viewport.pixelFromPoint(new OpenSeadragon.Point(0, 0), true);
             var zoom = this._viewer.viewport.getZoom(true);
             // TODO: Expose an accessor for _containerInnerSize in the OSD API so we don't have to use the private variable.
-            var scale = this._viewer.viewport._containerInnerSize.x * zoom;
+            scale = this._viewer.viewport._containerInnerSize.x * zoom;
             this._node.setAttribute('transform',
                 'translate(' + p.x + ',' + p.y + ') scale(' + scale + ')');
         },
