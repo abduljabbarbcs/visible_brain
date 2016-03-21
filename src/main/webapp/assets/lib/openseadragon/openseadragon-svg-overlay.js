@@ -69,7 +69,7 @@
             }
 
             p = this._viewer.viewport.pixelFromPoint(new OpenSeadragon.Point(0, 0), true);
-            var zoom = this._viewer.viewport.getZoom(true);
+            zoom = this._viewer.viewport.getZoom(true);
             // TODO: Expose an accessor for _containerInnerSize in the OSD API so we don't have to use the private variable.
             scale = this._viewer.viewport._containerInnerSize.x * zoom;
             this._node.setAttribute('transform',

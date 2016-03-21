@@ -8905,7 +8905,6 @@ function doZoom() {
         currentTime     = $.now();
         deltaTime       = currentTime - THIS[ this.hash ].lastZoomTime;
         adjustedFactor  = Math.pow( THIS[ this.hash ].zoomFactor, deltaTime / 1000 );
-
         this.viewport.zoomBy( adjustedFactor );
         this.viewport.applyConstraints();
         THIS[ this.hash ].lastZoomTime = currentTime;

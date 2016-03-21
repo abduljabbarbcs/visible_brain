@@ -65,6 +65,24 @@ public class OverlayInfo extends BaseEntity{
         }
     }
 
+    public OverlayInfo getParent() {
+        return parent;
+    }
+
+    public void setParent(OverlayInfo parent) {
+        this.parent = parent;
+    }
+
+    public double getZoom() {
+        return zoom;
+    }
+
+    public void setZoom(double zoom) {
+        this.zoom = zoom;
+    }
+
+    @Column(name = "zoom", nullable = false)
+    private double zoom ;
     @OneToMany(mappedBy="overlayInfo", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     @JsonManagedReference
@@ -80,7 +98,61 @@ public class OverlayInfo extends BaseEntity{
         this.description = description;
     }
 
-//    public Image getImage() {
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    @Column(name = "color", nullable = true)
+    private String color;
+
+    @Column(name = "x", nullable = false)
+    private double x ;
+
+    @Column(name = "y", nullable = false)
+    private double y ;
+
+    @Column(name = "width", nullable = false)
+    private double width ;
+
+    @Column(name = "height", nullable = false)
+    private double height ;
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+    //    public Image getImage() {
 //        return image;
 //    }
 //

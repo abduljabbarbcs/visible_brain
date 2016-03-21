@@ -59,4 +59,14 @@ public class OverlayPoint {
         this.y = y;
     }
 
+    public boolean isStart() {
+        return start;
+    }
+
+    public void setStart(boolean start) {
+        this.start = start;
+    }
+
+    private boolean start = false;
+
 }

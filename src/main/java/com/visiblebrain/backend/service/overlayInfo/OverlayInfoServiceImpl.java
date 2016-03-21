@@ -59,7 +59,13 @@ public class OverlayInfoServiceImpl implements OverlayInfoService {
     public OverlayInfo create(OverlayInfo form ) {
         OverlayInfo overlayInfo = new OverlayInfo();
         overlayInfo.setName(form.getName());
+        overlayInfo.setZoom(form.getZoom());
         overlayInfo.setDescription(form.getDescription());
+        overlayInfo.setX(form.getX());
+        overlayInfo.setY(form.getY());
+        overlayInfo.setWidth(form.getWidth());
+        overlayInfo.setHeight(form.getHeight());
+        overlayInfo.setColor(form.getColor());
         if(form.getOverlayInfo()!=null) {
             if (form.getOverlayInfo().getId() > 0) {
                 System.out.println(form.getOverlayInfo().getId());
