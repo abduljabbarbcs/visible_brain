@@ -301,6 +301,11 @@ position:relative;
   position: relative;
   z-index: 6;
 }
+.highlight{
+    background-color:#337AB7;
+    min-width:50px !important;
+    max-width:100%;
+}
 .discription_box{
     position:fixed;
     border: 1px solid rgba(0,0,0,.2);
@@ -339,6 +344,10 @@ position:relative;
     color:#fff;
     background-color:red;
 }
+.remove_color_disabled{
+  color:#fff;
+  background-color:red !important;
+}
 .margin-right{
     margin-right:5px
 }
@@ -356,6 +365,16 @@ position:relative;
 }
 .saveButtonDisable{
     opacity:0.2;
+}
+.custom-ul{
+    -webkit-padding-start: 0px;
+}
+.well {
+padding:0px;
+}
+.treeScroll{
+    overflow-x:auto !important;
+    overflow-y:auto !important;
 }
 .saveButtonEnable{
     opacity:1;
@@ -480,6 +499,7 @@ position:relative;
 //treeView start
 .tree {
     min-height:20px;
+    padding:19px;
     margin-bottom:20px;
     background-color:#fbfbfb;
     border:1px solid #999;
@@ -489,9 +509,6 @@ position:relative;
     -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
     -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05)
-}
-.well {
-padding:0px;
 }
 .tree li {
     list-style-type:none;

@@ -1,18 +1,6 @@
 var slideModule = angular.module('slideModule', []);
-slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactory','UserLoginFactory','OverlayFactory',
- function($scope,$stateParams,SlidesFactory,UserLoginFactory,OverlayFactory){
-            $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
-            $('.tree li.parent_li > span').on('click', function (e) {
-                 var children = $(this).parent('li.parent_li').find(' > ul > li');
-                 if (children.is(":visible")) {
-                     children.hide('fast');
-                     $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
-                 } else {
-                     children.show('fast');
-                     $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
-                 }
-                 e.stopPropagation();
-            });
+slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactory','UserLoginFactory','OverlayFactory','$filter','$compile','$timeout',
+ function($scope,$stateParams,SlidesFactory,UserLoginFactory,OverlayFactory,$filter,$compile,$timeout){
             $scope.resetData = function(){
                 $('#addOverlay').modal('hide');
                 $scope.overlayPoints = [];
@@ -22,10 +10,25 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                 $scope.loaded = true;
                 $scope.overlayInfo.name="";
                 $scope.overlayInfo.description="";
-                $scope.zoom=0;
+                $scope.zoom = zoom;
                 $scope.overlayInfo.parent = -1;
                 $scope.enable=false;
              };
+              $scope.filterParent = function(id)
+              {
+                 var tempData =[];
+                 angular.forEach($scope.slide.overlayInfos,function(value,key)
+                 {
+                    if(value.parent!=null)
+                    {
+                         if(value.parent.id === id)
+                         {
+                             tempData.push(value);
+                         }
+                    }
+                 });
+                 return tempData;
+              }
             var overlay;
                var line = d3.svg.line()
                                         .interpolate("basis");
@@ -85,6 +88,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                   $scope.resetData();
             });
            $('#add').on('click',function(e){
+            $scope.isDescription = false;
             if($("#add").attr("disabled")!="disabled")
             {
                 $(".currentPath").remove();
@@ -166,6 +170,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
             });
              $("#add").attr("disabled",'disabled');
              $("#add").css("opacity","0.1");
+             $scope.admin = false;
              $scope.checkLoginUser = function()
              {
                  var data = UserLoginFactory.get();
@@ -175,13 +180,109 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                          $("#add").removeAttr("disabled");;
                          $("#add").css("opacity","1");
                          $scope.login = true;
+                         $scope.admin = result.admin;
                      }
                  });
              };
-             $scope.resetData();
              $scope.login=false;
              $scope.temp=true;
-             $scope.color = "#ff0000"
+             $scope.color = "#ff0000";
+             $scope.loaded = true;
+             $scope.treeStart = true;
+             $scope.drawOverlay = function(overlayInfo){
+                 $(".highlight").removeClass("highlight");
+                 $("#la"+overlayInfo.id).addClass("highlight");
+//                 #("#la"+overlayInfo.id)
+                 $scope.isDescription=true;
+                 $scope.id = overlayInfo.id;
+                 $scope.description = overlayInfo.description;
+                 $scope.overlayColor = overlayInfo.color;
+                 $('.profile-menu .main-menu').hide();
+                 $elem = '#sidebar';
+                 $elem2 = '#menu-trigger';
+
+                 $('#chat-trigger').removeClass('open');
+
+                 if (!$('#chat').hasClass('toggled')) {
+                     $('#header').toggleClass('sidebar-toggled');
+                 }
+                 else {
+                     $('#chat').removeClass('toggled');
+                 }
+                 $('.currentPath').remove();
+                 $('.oldPath').remove();
+                 $scope.resetData();
+                 var count = 0;
+                 lineGraph=null;
+                 angular.forEach(overlayInfo.overlayPoints, function(point, key){
+                     if(point.start && count == 0)
+                     {
+                         count++;
+                         data.push([point.x,point.y])
+                     }
+                     else if(count >= 1 && point.start)
+                     {
+                         self.viewer.viewport.zoomTo(overlayInfo.zoom,null,false);
+                         App.save(data);
+                         lineGraph.attr("class","oldPath");
+                         lineGraph=null;
+                         data=[];
+                         data.push([point.x,point.y])
+                     }
+                     else
+                     {
+                       data.push([point.x,point.y])
+                     }
+                 });
+                 self.viewer.viewport.zoomTo(overlayInfo.zoom,null,false);
+                 App.save(data);
+             }
+             $scope.treeData=[];
+             var count = 0;
+             $scope.tree = function(){
+                if($scope.treeStart)
+                {
+                    $scope.treeData=[];
+                    var complete = false;
+                    angular.forEach($scope.slide.overlayInfos,function(value,key){
+//                       $scope.treeData[key]=( $filter('filter')($scope.slide.overlayInfos, { parent:{id: value.id}}));
+                       $scope.treeData[key] = $scope.filterParent(value.id);
+                       if($scope.treeData[key].length > 0)
+                       {
+
+//                            angular.forEach($scope.treeData[key],function(child,key){
+//                                var ul = '<li><span id="sp'+child.id+'"><i class="fa fa-file-image-o"></i></span> <label class="margin-left-label" ng-click="drawOverlay('child')">'+child.name+'</label><ul id="'+child.id+'"></ul></li>';
+//                                $("#"+value.id).append(ul);
+//                                $compile($("#"+value.id))($scope);
+//                            });
+                               $timeout(function(){
+
+                                var elem = (document.getElementById(value.id));
+                                $("#sp"+value.id+" i").removeClass("fa-file-image-o").addClass("fa-minus")
+                                var ul = '<li ng-repeat="overlay in treeData['+key+']"><span id="sp{{overlay.id}}"><i class="fa fa-file-image-o"></i></span> <label class="margin-left-label" ng-click="drawOverlay(overlay)" id="la{{overlay.id}}">{{overlay.name}}</label><ul id="{{overlay.id}}"></ul></li>';
+                                $("#"+value.id).append(ul);
+                                $compile($("#"+value.id))($scope);
+                                },10);
+                                count = count+10;
+                        }
+                    });
+                    $timeout(function(){
+                    $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+                    $('.tree li.parent_li > span').on('click', function (e) {
+                        var children = $(this).parent('li.parent_li').find(' > ul > li');
+                        if (children.is(":visible")) {
+                            children.hide('fast');
+                            $(this).attr('title', 'Expand this branch').find(' > i').addClass('fa-plus').removeClass('fa-minus');
+                        } else {
+                            children.show('fast');
+                            $(this).attr('title', 'Collapse this branch').find(' > i').addClass('fa-minus').removeClass('fa-plus');
+                        }
+                        e.stopPropagation();
+                    });
+                    },count);
+                    $scope.treeStart = false;
+                }
+             }
              $scope.getSlide = function(){
                  var data = SlidesFactory.get({id:$stateParams.id});
                  data.$promise.then(function(result) {
@@ -189,7 +290,10 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                      if($scope.temp){
                         App.init([]);
                         $scope.temp=false;
+                        $scope.resetData();
                      }
+                     $scope.treeStart = true;
+                     $scope.tree();
                  });
              };
               $scope.closeError = function(){
@@ -201,18 +305,13 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                          $scope.isError=true;
                          $scope.errorMsg = "Please Enter name";
                      }
-//                     else if($scope.overlayInfo.parent === -1 && $scope.slide.overlayInfos.length > 0 )
-//                     {
-//                         $scope.isError=true;
-//                         $scope.errorMsg = "Please Select Parent";
-//                     }
                      else if($scope.overlayInfo.description==""){
                          $scope.isError=true;
                          $scope.errorMsg = "Please Enter Description";
                      }
                      else{
                          $scope.loaded = false;
-                         var jsonData = {
+                         $scope.jsonData = {
                             "name":$scope.overlayInfo.name,
                             "description":$scope.overlayInfo.description,
                             "zoom":$scope.zoom,
@@ -225,13 +324,12 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                                 "id":$scope.slide.id
                             }
                          }
-                         var localData = OverlayFactory.save({}, jsonData);
+                         var localData = OverlayFactory.save({}, $scope.jsonData);
                          localData.$promise.then(function(result) {
                              $scope.loaded = true;
                              $scope.getSlide();
                              showSuccessMessage($scope.overlayInfo.name,' add overlay ',' into overlays', 'inverse');
                              $scope.resetData();
-
                          },function(){
                              showErrorMessage($scope.overlayInfo.name,'inverse');
                              $scope.resetData();
@@ -242,51 +340,6 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                     $scope.isDescription = false;
                  }
                  $scope.closeDescription();
-                $scope.drawOverlay = function(overlayInfo){
-                    $scope.isDescription=true;
-                    $scope.id = overlayInfo.id;
-                    $scope.description = overlayInfo.description;
-                    $scope.overlayColor = overlayInfo.color;
-                    $('.profile-menu .main-menu').hide();
-                    $elem = '#sidebar';
-                    $elem2 = '#menu-trigger';
-
-                    $('#chat-trigger').removeClass('open');
-
-                    if (!$('#chat').hasClass('toggled')) {
-                        $('#header').toggleClass('sidebar-toggled');
-                    }
-                    else {
-                        $('#chat').removeClass('toggled');
-                    }
-                    $('.currentPath').remove();
-                    $('.oldPath').remove();
-                    $scope.resetData();
-                    var count = 0;
-                    lineGraph=null;
-                    angular.forEach(overlayInfo.overlayPoints, function(point, key){
-                        if(point.start && count == 0)
-                        {
-                            count++;
-                            data.push([point.x,point.y])
-                        }
-                        else if(count >= 1 && point.start)
-                        {
-                            self.viewer.viewport.zoomTo(overlayInfo.zoom,null,false);
-                            App.save(data);
-                            lineGraph.attr("class","oldPath");
-                            lineGraph=null;
-                            data=[];
-                            data.push([point.x,point.y])
-                        }
-                        else
-                        {
-                          data.push([point.x,point.y])
-                        }
-                    });
-                    self.viewer.viewport.zoomTo(overlayInfo.zoom,null,false);
-                    App.save(data);
-                }
                 $scope.openDialog = function(){
                     if(!$scope.enable)
                     { return; }
@@ -313,12 +366,19 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                  mousescrollstep: 100
              });
              $scope.remove = function(){
+                $scope.loaded=false;
                 var response=OverlayFactory.delete({"id":$scope.id});
                     response.$promise.then(function(result) {
-                			$scope.getSlide()
+                        $scope.loaded=true;
+                        $(".oldPath").remove();
+                        $(".currentPath").remove();
+                        showSuccessMessage($scope.overlayInfo.name,' remove overlay ',' from overlays', 'inverse');
+                        $scope.isDescription=false;
+                		$scope.getSlide();
+//                        $("#"+$scope.id).remove();
+
                 },function(){
                 	alert("Error DeviceId or Device_type is not valid");
                 });
              };
-//              scrollbar('.c-overflow', 'rgba(0,0,0,0.5)', '5px');
 }]);

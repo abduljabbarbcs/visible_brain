@@ -1,21 +1,22 @@
-<div class="custom-height-relative" >
+<div class="custom-height-relative">
     <div class="sitesView" id="chat-trigger" data-trigger="#chat">
-        <a href="#chat"></a>
+        <a href="#chat" data-ng-click="tree()"></a>
     </div>
-    <aside id="chat">
+    <aside id="chat" class="treeScroll">
         <div class="sidebar-header">
             <h4>{{slide.name}}</h4>
         </div>
         <hr class="custom-line">
         <div class="tree well">
-            <ul>
+            <ul class="custom-ul" style="pointer-events:none">
                 <li>
                     <span><i class="fa fa-folder-open"></i></span><label class="margin-left-label">{{slide.name}}</label>
-                    <ul>
-                        <li data-ng-repeat="overlayInfo in slide.overlayInfos">
-                            <span><i class="fa fa-file-image-o"></i></span> <label class="margin-left-label" data-ng-click="drawOverlay(overlayInfo)">{{overlayInfo.name}}</label>
+                    <ul style="pointer-events:auto">
+                        <li data-ng-repeat="overlayInfo in slide.overlayInfos" ng-if="overlayInfo.overlayInfo == null">
+                            <span id="sp{{overlayInfo.id}}"><i class="fa fa-file-image-o"></i></span> <label class="margin-left-label" data-ng-click="drawOverlay(overlayInfo)" id="la{{overlayInfo.id}}">{{overlayInfo.name}}</label>
+                            <ul id="{{overlayInfo.id}}"></ul>
                         </li>
-                            </ul>
+                        </ul>
                         </li>
                     </ul>
                 </li>
@@ -46,7 +47,7 @@
                         <p class="custom-paragraph">{{description}}</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default remove_color" title="Remove Overlay" data-ng-click="remove()">Remove</button>
+                        <button type="button" class="btn btn-default" ng-class="admin ? 'remove_color' : 'remove_color_disabled'" title="Remove Overlay" data-ng-disabled="!admin" data-ng-click="remove()">Remove</button>
                     </div>
 
 
