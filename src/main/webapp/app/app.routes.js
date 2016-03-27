@@ -3,11 +3,11 @@ var visibleBrainApp = angular.module('visibleBrainApp');
 visibleBrainApp.config(['$stateProvider', '$urlRouterProvider','cfpLoadingBarProvider',
                                            function($stateProvider, $urlRouterProvider,cfpLoadingBarProvider){
     cfpLoadingBarProvider.includeSpinner = true;
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("/visiblebrain");
 
 	$stateProvider.
 	state('home', {
-	    url:'/home',
+	    url:'/visiblebrain',
 		templateUrl: '/app/components/home/homeView.html',
 		controller: 'homeController',
 		resolve: {
