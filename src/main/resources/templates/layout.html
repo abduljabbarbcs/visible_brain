@@ -20,12 +20,12 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand font-color-white" th:href="@{/}" href="/">Visible Brain App</a>
+                <a class="navbar-brand font-color-white" th:href="@{/}" href="/">Visible Brain</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li th:if="${g_user}"><a th:href="@{#usermanagement}" th:if="${g_user.isAdmin()}">User Management</a></li>
-                    <li><a th:href="@{/login}" href="login" class="font-color-white" th:if="!${g_user}">LogIn</a></li>
+                    <li><a th:href="@{/login}" href="login" class="font-color-white" th:if="!${g_user}">Log in</a></li>
                     <li><a th:href="@{/user/reset-password}" href="reset" class="font-color-white" th:if="!${g_user}">Reset Password</a></li>
                     <li><a th:href="@{/user/reset-password-login}" href="reset" class="font-color-white" th:if="${g_user}">Change Password</a></li>
                     <li><a th:href="@{/logout}" href="logout" class="font-color-white" th:if="${g_user}"><i class="icon-chevron-left"></i>Logout</a></li>
