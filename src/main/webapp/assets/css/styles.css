@@ -136,7 +136,9 @@ footer {
 }
 .image-wrap{
     height:100%;
-    width:100%;
+    width:auto;
+    display: block;
+    margin: 0 auto;
 }
 .custum-col{
  border:1px solid #eee;

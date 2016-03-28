@@ -54,7 +54,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                         Image: {
                             xmlns: "http://schemas.microsoft.com/deepzoom/2008",
                             Url: "/assets/img/dzi image/"+$scope.slide.slidePath+"_files/",
-                            Format: "jpg",
+                            Format: "jpeg",
                             Overlap: "1",
                             TileSize: "256",
                             Size: {
