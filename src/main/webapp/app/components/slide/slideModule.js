@@ -56,10 +56,10 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                             Url: "/assets/img/dzi image/"+$scope.slide.slidePath+"_files/",
                             Format: "jpg",
                             Overlap: "1",
-                            TileSize: "254",
+                            TileSize: "256",
                             Size: {
-                                Height: "3061",
-                                Width:  "4096"
+                                Height: "306939",
+                                Width:  "106259"
                             }
                         }
                     };
