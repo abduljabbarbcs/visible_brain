@@ -11,6 +11,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                 $scope.overlayInfo.name="";
                 $scope.overlayInfo.description="";
                 $scope.zoom = zoom;
+                $scope.scale = scale;
                 $scope.overlayInfo.parent = -1;
                 $scope.enable=false;
              };
@@ -40,7 +41,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                     {
                         lineGraph = d3.select(overlay.node()).append("path")
                                 .attr("class","currentPath")
-                                .style("stroke-width", 1/scale)
+                                .style("stroke-width", 1/$scope.overlayScale)
                                 .style("stroke",$scope.overlayColor)
                                 .style("fill", "none");
                     }
@@ -57,7 +58,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                             Format: "jpeg",
                             Overlap: "1",
                             TileSize: "256",
-                            Size: {
+                             Size: {
                                 Height: "306939",
                                 Width:  "106259"
                             }
@@ -94,6 +95,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                 $(".currentPath").remove();
                 $(".oldPath").remove();
                 $scope.zoom = zoom;
+                $scope.scale =scale;
                 var iDiv = document.createElement('div');
                 iDiv.id = 'infoi';
                 data=[];
@@ -197,6 +199,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                  $scope.id = overlayInfo.id;
                  $scope.description = overlayInfo.description;
                  $scope.overlayColor = overlayInfo.color;
+                 $scope.overlayScale = overlayInfo.scale;
                  $('.profile-menu .main-menu').hide();
                  $elem = '#sidebar';
                  $elem2 = '#menu-trigger';
@@ -315,6 +318,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                             "name":$scope.overlayInfo.name,
                             "description":$scope.overlayInfo.description,
                             "zoom":$scope.zoom,
+                            "scale":$scope.scale,
                             "color":$scope.color,
                             "overlayPoints":$scope.overlayPoints,
                             "overlayInfo":{

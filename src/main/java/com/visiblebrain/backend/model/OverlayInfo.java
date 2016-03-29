@@ -83,6 +83,17 @@ public class OverlayInfo extends BaseEntity{
 
     @Column(name = "zoom", nullable = false)
     private double zoom ;
+
+    public double getScale() {
+        return scale;
+    }
+
+    public void setScale(double scale) {
+        this.scale = scale;
+    }
+
+    @Column(name = "scale", nullable = false)
+    private double scale ;
     @OneToMany(mappedBy="overlayInfo", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     @JsonManagedReference
