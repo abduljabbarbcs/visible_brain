@@ -12,6 +12,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                 $scope.overlayInfo.description="";
                 $scope.zoom = zoom;
                 $scope.scale = scale;
+                $scope.bounds = self.viewer.viewport.getBounds(true);
                 $scope.overlayInfo.parent = -1;
                 $scope.enable=false;
              };
@@ -58,7 +59,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                             Format: "jpeg",
                             Overlap: "1",
                             TileSize: "256",
-                             Size: {
+                            Size: {
                                 Height: "306939",
                                 Width:  "106259"
                             }
@@ -96,6 +97,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                 $(".oldPath").remove();
                 $scope.zoom = zoom;
                 $scope.scale =scale;
+                $scope.bounds = self.viewer.viewport.getBounds(true);
                 var iDiv = document.createElement('div');
                 iDiv.id = 'infoi';
                 data=[];
@@ -191,10 +193,12 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
              $scope.color = "#ff0000";
              $scope.loaded = true;
              $scope.treeStart = true;
+
              $scope.drawOverlay = function(overlayInfo){
                  $(".highlight").removeClass("highlight");
                  $("#la"+overlayInfo.id).addClass("highlight");
 //                 #("#la"+overlayInfo.id)
+                 $scope.overlayBounds = new OpenSeadragon.Rect(overlayInfo.x,overlayInfo.y,overlayInfo.width,overlayInfo.height);
                  $scope.isDescription=true;
                  $scope.id = overlayInfo.id;
                  $scope.description = overlayInfo.description;
@@ -225,7 +229,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                      }
                      else if(count >= 1 && point.start)
                      {
-                         self.viewer.viewport.zoomTo(overlayInfo.zoom,null,false);
+                         self.viewer.viewport.fitBounds($scope.overlayBounds,false)
                          App.save(data);
                          lineGraph.attr("class","oldPath");
                          lineGraph=null;
@@ -237,7 +241,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                        data.push([point.x,point.y])
                      }
                  });
-                 self.viewer.viewport.zoomTo(overlayInfo.zoom,null,false);
+                 self.viewer.viewport.fitBounds($scope.overlayBounds,false)
                  App.save(data);
              }
              $scope.treeData=[];
@@ -320,6 +324,10 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                             "zoom":$scope.zoom,
                             "scale":$scope.scale,
                             "color":$scope.color,
+                            "x":$scope.bounds.x,
+                            "y":$scope.bounds.y,
+                            "width":$scope.bounds.width,
+                            "height":$scope.bounds.height,
                             "overlayPoints":$scope.overlayPoints,
                             "overlayInfo":{
                                 "id":$scope.overlayInfo.parent
