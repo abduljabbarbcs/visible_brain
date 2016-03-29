@@ -40,7 +40,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                     {
                         lineGraph = d3.select(overlay.node()).append("path")
                                 .attr("class","currentPath")
-                                .style("stroke-width", 0.005)
+                                .style("stroke-width", 1/scale)
                                 .style("stroke",$scope.overlayColor)
                                 .style("fill", "none");
                     }
