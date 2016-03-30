@@ -1,6 +1,7 @@
 package com.visiblebrain.backend.repository;
 
 import com.visiblebrain.backend.model.OverlayInfo;
+import com.visiblebrain.backend.model.OverlayPoint;
 import com.visiblebrain.backend.model.Slide;
 import org.springframework.data.jpa.repository.JpaRepository;
 

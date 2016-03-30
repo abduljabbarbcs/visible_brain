@@ -15,6 +15,8 @@ public interface SlideService {
 
     Collection<Slide> getAllSlides();
 
+    Collection<Slide> getTypeImages(String type);
+
     Slide create(Slide form);
 
     Slide update(Long id, Slide s);

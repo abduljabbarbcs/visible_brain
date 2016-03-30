@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -47,6 +48,21 @@ public class SlideServiceImpl implements SlideService {
     public Collection<Slide> getAllSlides() {
         LOGGER.debug("Getting all users");
         return slideRepository.getSlidesByActiveAndType(true,"slide");
+    }
+    @Override
+    public Collection<Slide> getTypeImages(String type) {
+        LOGGER.debug("Getting all users");
+        Collection<Slide> images = slideRepository.getSlidesByActiveAndType(true,type);
+        System.out.println(images);
+        Collection<Slide> temp = new ArrayList<Slide>();
+        for(Slide image : images)
+        {
+            if(!(image.getOverlayInfos().isEmpty()))
+            {
+                temp.add(image);
+            }
+        }
+        return temp;
     }
 
     @Transactional

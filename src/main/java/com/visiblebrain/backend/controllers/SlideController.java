@@ -35,6 +35,17 @@ public class SlideController {
     @ResponseBody
     public Collection<Slide> getAll() { return slideService.getAllSlides(); }
 
+    @RequestMapping(value="/getMale",method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<Slide> getAllMale() {
+        return slideService.getTypeImages("male");
+    }
+    @RequestMapping(value="/getFemale",method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<Slide> getAllFemale() {
+        return slideService.getTypeImages("female");
+    }
+
 //    @RequestMapping(value="/getSlide",method = RequestMethod.GET)
 //    @ResponseBody
 //    public Slide getImage(@PathVariable Slide slide) {
