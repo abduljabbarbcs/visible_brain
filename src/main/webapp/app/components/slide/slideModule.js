@@ -42,7 +42,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                     {
                         lineGraph = d3.select(overlay.node()).append("path")
                                 .attr("class","currentPath")
-                                .style("stroke-width", 1/$scope.overlayScale)
+                                .style("stroke-width", 2/$scope.overlayScale)
                                 .style("stroke",$scope.overlayColor)
                                 .style("fill", "none");
                     }
@@ -59,6 +59,10 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                             Format: "jpeg",
                             Overlap: "1",
                             TileSize: "256",
+//                            Size:{
+//                                Height: "3061",
+//                                Width:  "4096"
+//                            }
                             Size: {
                                 Height: "306939",
                                 Width:  "106259"
@@ -144,7 +148,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                     if (!drawObj.currentPath){
                       drawObj.currentPath = svg.append("path")
                         .attr("class","currentPath")
-                        .style("stroke-width", 1)
+                        .style("stroke-width", 2)
                         .style("stroke",$scope.color)
                         .style("fill", "none");
                     }
