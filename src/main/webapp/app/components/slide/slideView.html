@@ -28,7 +28,22 @@
         <div class="card-block custom-card-block image-wrap custom-height-relative custom-height">
             <div>
                 <a class="float-right" id="add" title="Draw"><i class="fa fa-pencil-square-o fa-3x"></i></a>
-                <input class="float-right margin-right" type="color" data-ng-show="login" id="html5colorpicker" ng-model="color">
+                <!--<input class="float-right margin-right" type="color" data-ng-show="login" id="html5colorpicker" ng-model="color">-->
+                <a class="float-right  margin-right" id="custom-color-picker" title="Pick Color" data-ng-show="login"> <input type="text"  ng-model="color" id="full"/></a>
+                <a class="float-right  margin-right" id="lineWidth" title="Line Width" data-ng-show="login">
+                    <select ng-model="lineWidth" class="custom-dialog-input">
+                        <option value="1">01</option>
+                        <option value="2">02</option>
+                        <option value="3">03</option>
+                        <option value="4">04</option>
+                        <option value="5">05</option>
+                        <option value="6">06</option>
+                        <option value="7">07</option>
+                        <option value="8">08</option>
+                        <option value="9">09</option>
+                        <option value="10">10</option>
+                    </select>
+                </a>
                 <a class="float-right margin-right" id="clear" title="Clear" data-ng-show="login" ng-class="enable ? 'saveButtonEnable' : 'saveButtonDisable'" data-ng-click="clear()"><i class="fa fa-eraser fa-3x"></i></a>
                 <a class="float-right margin-right" title="Save" id="save" data-ng-show="login" ng-class="enable ? 'saveButtonEnable' : 'saveButtonDisable'" data-ng-click="openDialog()"><i class="fa fa-floppy-o fa-3x"></i></a>
                 <a class="float-right margin-right" id="remove" title="View" data-ng-show="login"><i class="fa fa-hand-rock-o fa-3x"></i></a>

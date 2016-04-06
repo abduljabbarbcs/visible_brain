@@ -129,6 +129,17 @@ public class OverlayInfo extends BaseEntity{
     @Column(name = "width", nullable = false)
     private double width ;
 
+    public double getLineWidth() {
+        return lineWidth;
+    }
+
+    public void setLineWidth(double lineWidth) {
+        this.lineWidth = lineWidth;
+    }
+
+    @Column(name = "lineWidth", nullable = false)
+    private double lineWidth ;
+
     @Column(name = "height", nullable = false)
     private double height ;
 

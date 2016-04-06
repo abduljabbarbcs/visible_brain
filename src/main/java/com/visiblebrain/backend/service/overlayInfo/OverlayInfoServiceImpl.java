@@ -66,6 +66,7 @@ public class OverlayInfoServiceImpl implements OverlayInfoService {
         overlayInfo.setY(form.getY());
         overlayInfo.setWidth(form.getWidth());
         overlayInfo.setHeight(form.getHeight());
+        overlayInfo.setLineWidth(form.getLineWidth());
         overlayInfo.setColor(form.getColor());
         if(form.getOverlayInfo()!=null) {
             if (form.getOverlayInfo().getId() > 0) {

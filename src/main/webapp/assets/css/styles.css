@@ -282,18 +282,30 @@ footer {
 position:relative;
   z-index: 4;
 }
-#html5colorpicker{
-  position:relative;
-  z-index:4;
-  width:3%;
-  height:35px;
-  background-color: #337ab7;
-  border: 1px solid #337ab7;
-  padding: 0px 0px;
+#lineWidth{
+    margin-top:3px;
+    position:relative;
+    z-index: 4;
+}
+#custom-color-picker{
+margin-top:3px;
+position:relative;
+  z-index: 4;
 }
 #remove{
   position: relative;
   z-index: 6;
+}
+.sp-preview {
+    height: 23px !important;
+}
+.sp-replacer {
+    border: solid 1px #337ab7 !important;
+    background: #337ab7 !important;
+}
+.custom-dialog-input{
+    height: 33px;
+    width: 40px;
 }
 #save{
   position: relative;
