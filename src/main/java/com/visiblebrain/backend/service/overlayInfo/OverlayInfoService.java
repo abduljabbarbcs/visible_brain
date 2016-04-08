@@ -18,7 +18,7 @@ public interface OverlayInfoService {
 
     OverlayInfo create(OverlayInfo form);
 
-    OverlayInfo update(Long id, OverlayInfo o);
+    OverlayInfo update(OverlayInfo form);
 
     boolean delete(Long id);
 }

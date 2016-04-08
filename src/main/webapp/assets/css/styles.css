@@ -305,7 +305,7 @@ position:relative;
 }
 .custom-dialog-input{
     height: 33px;
-    width: 40px;
+    width: 45px;
 }
 #save{
   position: relative;
@@ -361,6 +361,14 @@ position:relative;
 .remove_color_disabled{
   color:#fff;
   background-color:red !important;
+}
+.edit_color{
+    color:#fff;
+    background-color:green;
+}
+.edit_color_disabled{
+  color:#fff;
+  background-color:green !important;
 }
 .margin-right{
     margin-right:5px
@@ -574,6 +582,7 @@ padding:0px;
 }
 .margin-left-label{
     margin-left:5px;
+    font-size:12px;
 }
 //treeView end
 

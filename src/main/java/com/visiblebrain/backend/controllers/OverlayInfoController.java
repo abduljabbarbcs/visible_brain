@@ -55,6 +55,12 @@ public class OverlayInfoController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @RequestMapping(value="/update" ,method = RequestMethod.POST)
+    @ResponseBody
+    public OverlayInfo update(@RequestBody OverlayInfo o) {
+        return overlayInfoService.update(o);
+    }
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value="/save" ,method = RequestMethod.POST)
     @ResponseBody
     public OverlayInfo save(@RequestBody OverlayInfo o) {
@@ -63,15 +69,15 @@ public class OverlayInfoController {
         return overlayInfoService.create(o);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @RequestMapping(value="/{id}", method = RequestMethod.PUT)
-    @ResponseBody
-    public OverlayInfo update(@PathVariable("id") long id, @RequestBody OverlayInfo o) {
-
-        LOGGER.debug("ID: "+ id);
-
-        return overlayInfoService.update(id, o);
-    }
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//    @RequestMapping(value="/{id}", method = RequestMethod.PUT)
+//    @ResponseBody
+//    public OverlayInfo update(@PathVariable("id") long id, @RequestBody OverlayInfo o) {
+//
+//        LOGGER.debug("ID: "+ id);
+//
+//        return overlayInfoService.update(id, o);
+//    }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value="/{id}", method = RequestMethod.DELETE)

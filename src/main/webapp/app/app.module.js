@@ -6,6 +6,9 @@ visibleBrainApp.factory('SlidesFactory', function ($resource) {
 visibleBrainApp.factory('OverlayFactory', function ($resource) {
 	return $resource('/api/overlay/:id', {id:'@id'});
 });
+visibleBrainApp.factory('OverlayUpdateFactory', function ($resource) {
+	return $resource('/api/overlay/update');
+});
 visibleBrainApp.factory('SlideUpdateFactory', function($resource) {
      return $resource('/api/slide/:id', {id:'@id'},
       {

@@ -57,59 +57,44 @@ public class OverlayInfoServiceImpl implements OverlayInfoService {
     @Transactional
     @Override
     public OverlayInfo create(OverlayInfo form ) {
-        OverlayInfo overlayInfo = new OverlayInfo();
-        overlayInfo.setName(form.getName());
-        overlayInfo.setZoom(form.getZoom());
-        overlayInfo.setScale(form.getScale());
-        overlayInfo.setDescription(form.getDescription());
-        overlayInfo.setX(form.getX());
-        overlayInfo.setY(form.getY());
-        overlayInfo.setWidth(form.getWidth());
-        overlayInfo.setHeight(form.getHeight());
-        overlayInfo.setLineWidth(form.getLineWidth());
-        overlayInfo.setColor(form.getColor());
-        if(form.getOverlayInfo()!=null) {
-            if (form.getOverlayInfo().getId() > 0) {
-                System.out.println(form.getOverlayInfo().getId());
-                overlayInfo.setOverlayInfo(overlayInfoRepository.findOne((form.getOverlayInfo().getId())));
+            OverlayInfo overlayInfo = new OverlayInfo();
+            overlayInfo.setName(form.getName());
+            overlayInfo.setZoom(form.getZoom());
+            overlayInfo.setScale(form.getScale());
+            overlayInfo.setDescription(form.getDescription());
+            overlayInfo.setX(form.getX());
+            overlayInfo.setY(form.getY());
+            overlayInfo.setWidth(form.getWidth());
+            overlayInfo.setHeight(form.getHeight());
+            overlayInfo.setLineWidth(form.getLineWidth());
+            overlayInfo.setColor(form.getColor());
+            if (form.getOverlayInfo() != null) {
+                if (form.getOverlayInfo().getId() > 0) {
+                    System.out.println(form.getOverlayInfo().getId());
+                    overlayInfo.setOverlayInfo(overlayInfoRepository.findOne((form.getOverlayInfo().getId())));
+                }
+            } else {
+                overlayInfo.setOverlayInfo(null);
             }
-        }
-        else
-        {
-            overlayInfo.setOverlayInfo(null);
-        }
-        overlayInfo.setSlide(slideRepository.findOne(form.getSlide().getId()));
-        if(userService.getLoggedInUser() == null)
-        {
-            overlayInfo.setUser(userRepository.findOne((long)1));
-        }
-        else {
-            overlayInfo.setUser(userService.getLoggedInUser());
-        }
-        overlayInfo.setOverlayPoints(form.getOverlayPoints());
+            overlayInfo.setSlide(slideRepository.findOne(form.getSlide().getId()));
+            if (userService.getLoggedInUser() == null) {
+                overlayInfo.setUser(userRepository.findOne((long) 1));
+            } else {
+                overlayInfo.setUser(userService.getLoggedInUser());
+            }
+            overlayInfo.setOverlayPoints(form.getOverlayPoints());
         OverlayInfo savedOverlay = overlayInfoRepository.save(overlayInfo);
         return savedOverlay;
     }
 
     @Override
-    public OverlayInfo update(Long id, OverlayInfo o)
+    public OverlayInfo update(OverlayInfo form )
     {
-        OverlayInfo overlayInfo = getOverlayInfoById(id);
+        OverlayInfo overlayInfo = getOverlayInfoById(form.getId());
         if(overlayInfo == null)
             return null;
 
-        if(StringUtils.isNotEmpty(o.getName()))
-            overlayInfo.setName(o.getName());
-//        if(StringUtils.isNotEmpty(u.getPassword()) && u.getPassword()!=user.getPassword())
-//            user.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));
-//        if(u.getRole()!=null && u.getRole()!=user.getRole())
-//            user.setRole(u.getRole());
-//        if(StringUtils.isNotEmpty(u.getFirstName()) && u.getFirstName() != user.getFirstName()) {
-//            user.setFirstName(u.getFirstName());
-//        }
-//        if(StringUtils.isNotEmpty(u.getLastName()) && u.getLastName() != user.getLastName()) {
-//            user.setLastName(u.getLastName());
-//        }
+        overlayInfo.setDescription(form.getDescription());
 
         OverlayInfo overlayInfoSaved = overlayInfoRepository.save(overlayInfo);
         return overlayInfoSaved;

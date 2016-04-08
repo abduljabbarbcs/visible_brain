@@ -62,6 +62,7 @@
                         <p class="custom-paragraph">{{description}}</p>
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-class="admin ? 'edit_color' : 'edit_color_disabled'" title="Edit Overlay" data-ng-disabled="!admin" data-ng-click="editOverlay()">Edit</button>
                         <button type="button" class="btn btn-default" ng-class="admin ? 'remove_color' : 'remove_color_disabled'" title="Remove Overlay" data-ng-disabled="!admin" data-ng-click="remove()">Remove</button>
                     </div>
 
@@ -81,7 +82,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close"  data-ng-click="resetData();">&times;</button>
-                <h4 class="modal-title">Add Overlay</h4>
+                <h4 class="modal-title" ng-hide="edit">Add Overlay</h4>
+                <h4 class="modal-title" ng-show="edit">Edit Overlay</h4>
             </div>
             <div class="modal-body">
                 <div id="assignErrorMsg" ng-show="isError == true" class="alert alert-danger alert-dismissible" role="alert">
@@ -104,7 +106,7 @@
                         <label>Parent</label>
                     </div>
                     <div class="col-md-7">
-                        <select ng-model="overlayInfo.parent" class="dialog-input">
+                        <select ng-model="overlayInfo.parent" class="dialog-input" id="parent">
                             <option value = -1 >- Select parent -</option>
                             <option data-ng-repeat="overlay in slide.overlayInfos" value={{overlay.id}}>{{overlay.name}}</option>
                         </select>

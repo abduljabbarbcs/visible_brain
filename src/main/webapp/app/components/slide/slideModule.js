@@ -1,6 +1,6 @@
 var slideModule = angular.module('slideModule', []);
-slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactory','UserLoginFactory','OverlayFactory','$filter','$compile','$timeout',
- function($scope,$stateParams,SlidesFactory,UserLoginFactory,OverlayFactory,$filter,$compile,$timeout){
+slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactory','UserLoginFactory','OverlayFactory','OverlayUpdateFactory','$filter','$compile','$timeout',
+ function($scope,$stateParams,SlidesFactory,UserLoginFactory,OverlayFactory,OverlayUpdateFactory,$filter,$compile,$timeout){
             $scope.resetData = function(){
                 $('#addOverlay').modal('hide');
                 $scope.overlayPoints = [];
@@ -8,7 +8,11 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                 dataPoints=[];
                 data=[];
                 $scope.loaded = true;
+                $scope.edit = false;
+                $("#overlayName").prop("disabled",false);
+                $("#parent").prop("disabled",false);
                 $scope.overlayInfo.name="";
+                $scope.overlayInfo.id = -1;
                 $scope.overlayInfo.description="";
                 $scope.zoom = zoom;
                 $scope.scale = scale;
@@ -199,8 +203,9 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
              $scope.lineWidth = 1;
              $scope.loaded = true;
              $scope.treeStart = true;
-
+             $scope.editData;
              $scope.drawOverlay = function(overlayInfo){
+                $scope.editData = overlayInfo;
                  $(".highlight").removeClass("highlight");
                  $("#la"+overlayInfo.id).addClass("highlight");
 //                 #("#la"+overlayInfo.id)
@@ -299,10 +304,13 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
              $scope.tree = function(){
                 if($scope.treeStart)
                 {
+                    $scope.slide.overlayInfos.sort(function(a, b) {
+                        return parseFloat(a.id) - parseFloat(b.id);
+                    });
                     $scope.treeData=[];
                     var complete = false;
                     angular.forEach($scope.slide.overlayInfos,function(value,key){
-//                       $scope.treeData[key]=( $filter('filter')($scope.slide.overlayInfos, { parent:{id: value.id}}));
+//                     $scope.treeData[key]=( $filter('filter')($scope.slide.overlayInfos, { parent:{id: value.id}}));
                        $scope.treeData[key] = $scope.filterParent(value.id);
                        if($scope.treeData[key].length > 0)
                        {
@@ -319,8 +327,8 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                                 var ul = '<li ng-repeat="overlay in treeData['+key+']"><span id="sp{{overlay.id}}"><i class="fa fa-file-image-o"></i></span> <label class="margin-left-label" ng-click="drawOverlay(overlay)" id="la{{overlay.id}}">{{overlay.name}}</label><ul id="{{overlay.id}}"></ul></li>';
                                 $("#"+value.id).append(ul);
                                 $compile($("#"+value.id))($scope);
-                                },10);
-                                count = count+10;
+                                },count);
+                                count = count+5;
                         }
                     });
                     $timeout(function(){
@@ -358,6 +366,7 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                  $scope.errorMsg = "";
              };
              $scope.saveOverlay =function(){
+                    var localData;
                      if($scope.overlayInfo.name==""){
                          $scope.isError=true;
                          $scope.errorMsg = "Please Enter name";
@@ -368,29 +377,42 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                      }
                      else{
                          $scope.loaded = false;
-                         $scope.jsonData = {
-                            "name":$scope.overlayInfo.name,
-                            "description":$scope.overlayInfo.description,
-                            "zoom":$scope.zoom,
-                            "scale":$scope.scale,
-                            "color":$scope.color,
-                            "lineWidth":$scope.lineWidth,
-                            "x":$scope.bounds.x,
-                            "y":$scope.bounds.y,
-                            "width":$scope.bounds.width,
-                            "height":$scope.bounds.height,
-                            "overlayPoints":$scope.overlayPoints,
-                            "overlayInfo":{
-                                "id":$scope.overlayInfo.parent
-                            },
-                            "slide":{
-                                "id":$scope.slide.id
-                            }
+                         if(!$scope.edit)
+                         {
+                             $scope.jsonData = {
+                                "name":$scope.overlayInfo.name,
+                                "description":$scope.overlayInfo.description,
+                                "zoom":$scope.zoom,
+                                "scale":$scope.scale,
+                                "color":$scope.color,
+                                "lineWidth":$scope.lineWidth,
+                                "x":$scope.bounds.x,
+                                "y":$scope.bounds.y,
+                                "width":$scope.bounds.width,
+                                "height":$scope.bounds.height,
+                                "overlayPoints":$scope.overlayPoints,
+                                "overlayInfo":{
+                                    "id":$scope.overlayInfo.parent
+                                },
+                                "slide":{
+                                    "id":$scope.slide.id
+                                }
+                             }
+                             localData = OverlayFactory.save({}, $scope.jsonData);
                          }
-                         var localData = OverlayFactory.save({}, $scope.jsonData);
+                         else
+                         {
+                             $scope.jsonData = {
+                               "id":$scope.overlayInfo.id,
+                               "description":$scope.overlayInfo.description
+                             }
+                              localData = OverlayUpdateFactory.save({}, $scope.jsonData);
+                         }
+
                          localData.$promise.then(function(result) {
                              $scope.loaded = true;
                              $scope.getSlide();
+                             $scope.description = $scope.overlayInfo.description;
                              showSuccessMessage($scope.overlayInfo.name,' add overlay ',' into overlays', 'inverse');
                              $scope.resetData();
                          },function(){
@@ -443,5 +465,15 @@ slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactor
                 },function(){
                 	alert("Error DeviceId or Device_type is not valid");
                 });
+             };
+             $scope.editOverlay = function(){
+                  $scope.edit = true;
+                   $("#overlayName").prop("disabled",true);
+                   $("#parent").prop("disabled",true);
+                    $scope.overlayInfo.id = $scope.editData.id;
+                   $scope.overlayInfo.name = $scope.editData.name;
+                   $scope.overlayInfo.parent = $scope.editData.parent.id;
+                   $scope.overlayInfo.description = $scope.editData.description;
+                   $('#addOverlay').modal('show');
              };
 }]);
