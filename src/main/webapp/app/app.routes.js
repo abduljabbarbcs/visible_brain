@@ -25,8 +25,8 @@ visibleBrainApp.config(['$stateProvider', '$urlRouterProvider','cfpLoadingBarPro
                   }
               }
 	}).
-    state('slide/:id', {
-        url:'/slide/:id',
+    state('slide/:id/:header', {
+        url:'/slide/:id/:header',
         templateUrl: '/app/components/slide/slideView.html',
         controller: 'slideController',
         resolve: {

@@ -1,6 +1,16 @@
 var slideModule = angular.module('slideModule', []);
-slideModule.controller('slideController', ['$scope','$stateParams','SlidesFactory','UserLoginFactory','OverlayFactory','OverlayUpdateFactory','$filter','$compile','$timeout',
- function($scope,$stateParams,SlidesFactory,UserLoginFactory,OverlayFactory,OverlayUpdateFactory,$filter,$compile,$timeout){
+slideModule.controller('slideController', ['$scope','$rootScope','$stateParams','SlidesFactory','UserLoginFactory','OverlayFactory','OverlayUpdateFactory','$filter','$compile','$timeout',
+ function($scope,$rootScope,$stateParams,SlidesFactory,UserLoginFactory,OverlayFactory,OverlayUpdateFactory,$filter,$compile,$timeout){
+
+            if($stateParams.header === 'appOverlay')
+            {
+                $rootScope.header = true;
+            }
+            else if($stateParams.header === 'overlay')
+            {
+                $rootScope.header = false;
+            }
+
             $scope.resetData = function(){
                 $('#addOverlay').modal('hide');
                 $scope.overlayPoints = [];

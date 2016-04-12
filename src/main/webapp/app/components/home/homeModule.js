@@ -3,8 +3,9 @@ var homeModule = angular.module('homeModule', []);
 homeModule.controller('homeController', ['$scope','$location','SlidesFactory','UserLoginFactory','SlideUpdateFactory', function($scope,$location,SlidesFactory,UserLoginFactory,SlideUpdateFactory){
     $scope.editS ={};
     $scope.editS.edit=undefined;
+    var header ='overlay';
     $scope.redirect = function(id){
-        $location.path( '/slide/'+id);
+        $location.path( '/slide/'+id +'/'+header);
     };
     $scope.getAllSlides = function(){
         var data = SlidesFactory.query();

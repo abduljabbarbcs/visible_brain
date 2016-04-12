@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
 <title>Visible Brain</title>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/assets/css/styles.css" rel="stylesheet" />
+
+    <script type="text/javascript"  src="/assets/js/jquery.min.js"></script>
+    <script type="text/javascript"  src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript"  src="/assets/js/app.js"></script>
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/assets/css/loading-bar.css" />
     <link href="http://ksylvest.github.io/jquery-growl/stylesheets/jquery.growl.css" rel="stylesheet" type="text/css"/>
@@ -25,8 +31,67 @@
 
 </head>
 <body data-ng-app ="visibleBrainApp" data-ng-cloak="">
-    <div layout:fragment="content" class="custom-height-relative">
-        <div ui-view="" class="custom-height-relative"></div>
+<nav class="navbar navbar-inverse navbar-fixed-top nav-bar-color" role="navigation" data-ng-hide="header">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand font-color-white" th:href="@{/}" href="/">Visible Brain</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li th:if="${g_user}"><a th:href="@{#usermanagement}" th:if="${g_user.isAdmin()}">User Management</a></li>
+                <li><a th:href="@{/login}" href="login" class="font-color-white" th:if="!${g_user}">Log in</a></li>
+                <li><a th:href="@{/user/reset-password}" href="reset" class="font-color-white" th:if="!${g_user}">Reset Password</a></li>
+                <li><a th:href="@{/user/reset-password-login}" href="reset" class="font-color-white" th:if="${g_user}">Change Password</a></li>
+                <li><a th:href="@{/logout}" href="logout" class="font-color-white" th:if="${g_user}"><i class="icon-chevron-left"></i>Logout</a></li>
+            </ul>
+        </div>
     </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="row row-offcanvas row-offcanvas-left custom-height-absolute custom-height">
+
+        <!--<div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">-->
+
+        <!--<ul class="nav nav-sidebar">-->
+        <!--<li th:class="${#httpServletRequest.requestURI=='/'}? active"><a th:href="@{/}" href="/">Home</a></li>-->
+        <!--</ul>-->
+
+        <!--</div>-->
+        <!--/span-->
+
+        <div class="col-sm-12 col-md-12 main custom-height-absolute custom-height">
+
+            <!--toggle sidebar button-->
+            <p class="visible-xs custom-opacity">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </button>
+            </p>
+
+            <div layout:fragment="content" class="content-fragment custom-height-relative">
+                <!-- CONTENT GOES HERE -->
+
+                        <div ui-view="" class="custom-height-relative"></div>
+            </div>
+
+        </div>
+        <!--/row-->
+    </div>
+</div>
+<!--/.container-->
+<footer>
+    <p class="pull-right" th:if="${g_user}">
+        Logged in as: <span th:text="${g_user.email}">my email</span>
+    </p>
+</footer>
+
+    <!--<div data-ng-hide="header" class="custom-height-relative">-->
+        <!--<div ui-view="" class="custom-height-relative"></div>-->
+    <!--</div>-->
 </body>
 </html>

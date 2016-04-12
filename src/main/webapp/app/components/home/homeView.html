@@ -18,7 +18,7 @@
                 <a data-ng-click="editSlide(slides[$index])" ng-show="editS.edit==='true'" class="home-select margin-right-check"><i class="fa fa-check fa-lg"></i></a>
                 <h4 class="card-title"  ng-show="editS.edit==='true'"> <input type="text"  class="home-input" placeholder="e.g. first name"  ng-model="slides[$index].name"></h4>
                 <p class="card-text" ng-show="editS.edit==='true'"><textarea ng-model="slides[$index].description" class="textArea"></textarea></p>
-                <h4 class="card-title" ng-hide="editS.edit==='true'"><a href="#/slide/{{slides[$index].id}}">{{slides[$index].name}}</a></h4>
+                <h4 class="card-title" ng-hide="editS.edit==='true'"><a href="#/slide/{{slides[$index].id}}/overlay">{{slides[$index].name}}</a></h4>
                 <p class="card-text" ng-hide="editS.edit==='true'">{{ slides[$index].description | limitTo: 200 }}{{slides[$index].description.length > 200 ? '...' : ''}}</p>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <a data-ng-click="editSlide(slides[$index+1])" ng-show="editS.edit==='true'" class="home-select margin-right-check"><i class="fa fa-check fa-lg"></i></a>
                 <h4 class="card-title" ng-show="editS.edit==='true'"> <input type="text"  class="home-input" placeholder="e.g. first name"  ng-model="slides[$index+1].name"></h4>
                 <p class="card-text" ng-show="editS.edit==='true'"><textarea ng-model="slides[$index+1].description" class="textArea"></textarea></p>
-                <h4 class="card-title" ng-hide="editS.edit==='true'"><a href="#/slide/{{slides[$index+1].id}}">{{slides[$index+1].name}}</a></h4>
+                <h4 class="card-title" ng-hide="editS.edit==='true'"><a href="#/slide/{{slides[$index+1].id}}/overlay">{{slides[$index+1].name}}</a></h4>
                 <p class="card-text" ng-hide="editS.edit==='true'">{{ slides[$index+1].description | limitTo: 200 }}{{slides[$index+1].description.length > 200 ? '...' : ''}}</p>
             </div>
         </div>

@@ -248,6 +248,7 @@ footer {
 }
 .custom-opacity{
     opacity:0;
+    pointer-events: none;
 }
 .custom-height{
     height:95% !important;
@@ -317,7 +318,6 @@ position:relative;
 }
 .highlight{
     background-color:#337AB7;
-    min-width:50px !important;
     max-width:100%;
 }
 .discription_box{
