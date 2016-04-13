@@ -143,6 +143,27 @@ public class OverlayInfo extends BaseEntity{
     @Column(name = "height", nullable = false)
     private double height ;
 
+    @Column(name = "screen_width", nullable = false)
+    private double screen_width;
+
+    public double getScreen_width() {
+        return screen_width;
+    }
+
+    public void setScreen_width(double screen_width) {
+        this.screen_width = screen_width;
+    }
+
+    public double getScreen_height() {
+        return screen_height;
+    }
+
+    public void setScreen_height(double screen_height) {
+        this.screen_height = screen_height;
+    }
+
+    @Column(name = "screen_height", nullable = false)
+    private double screen_height ;
     public double getX() {
         return x;
     }
