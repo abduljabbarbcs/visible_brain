@@ -1,6 +1,8 @@
 package com.visiblebrain.backend.service.slide;
 
 //import com.visiblebrain.backend.model.CurrentUser;
+import com.visiblebrain.backend.model.OverlayInfo;
+import com.visiblebrain.backend.model.OverlayPoint;
 import com.visiblebrain.backend.model.Slide;
 import com.visiblebrain.backend.model.User;
 import com.visiblebrain.backend.repository.SlideRepository;
@@ -47,13 +49,20 @@ public class SlideServiceImpl implements SlideService {
     @Override
     public Collection<Slide> getAllSlides() {
         LOGGER.debug("Getting all users");
-        return slideRepository.getSlidesByActiveAndType(true,"slide");
+        Collection<Slide> slides= slideRepository.getSlidesByActiveAndType(true,"slide");
+        Collection<Slide> temp = new ArrayList<Slide>();
+        for(Slide s : slides)
+        {
+            s.setOverlayInfos(new ArrayList<OverlayInfo>());
+            s.setUser(null);
+            temp.add(s);
+        }
+        return temp;
     }
     @Override
     public Collection<Slide> getTypeImages(String type) {
         LOGGER.debug("Getting all users");
         Collection<Slide> images = slideRepository.getSlidesByActiveAndType(true,type);
-        System.out.println(images);
         Collection<Slide> temp = new ArrayList<Slide>();
         for(Slide image : images)
         {

@@ -367,6 +367,40 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                         $scope.temp=false;
                         $scope.resetData();
                      }
+                     var max = -1;
+                      var depth = 0, nodes = $scope.slide.overlayInfos.filter(function(item) {
+                            return item.parent == null;
+                        }), total = nodes.length;
+
+                        do {
+                            depth++;
+                            nodes.forEach(function(node) {
+                                if(max < depth)
+                                {
+                                    max = depth;
+                                }
+                            });
+                            var ids = nodes.map(function(item) {return item["id"];});
+                            nodes = $scope.slide.overlayInfos.filter(function(item) {
+                                if(item.parent === null)
+                                {
+                                    return ids.indexOf(item.parent) > -1
+                                }
+                                else{
+                                    return ids.indexOf(item.parent.id) > -1;
+                                }
+                            });
+                            total += nodes.length
+                        } while (nodes.length > 0 && total <= $scope.slide.overlayInfos.length);
+                        if(max > 2)
+                        {
+                            var width = 100 + ((max - 2) * 15);
+                            $('.well').css('width', width+'%');
+                        }
+                        else
+                        {
+                             $('.well').css('width', '100%');
+                        }
                      $scope.treeStart = true;
                      $scope.tree();
                  });

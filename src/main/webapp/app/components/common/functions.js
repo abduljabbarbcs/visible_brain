@@ -35,7 +35,7 @@
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
    $('html').addClass('ismobile');
 }
-    
+
 $(document).ready(function(){
     /*
      * Top Search
@@ -800,5 +800,5 @@ $(document).ready(function(){
             customClass: 'ie9-placeholder'
         });
     }
-    
+
 });

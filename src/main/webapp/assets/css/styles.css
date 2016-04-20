@@ -392,11 +392,12 @@ position:relative;
     -webkit-padding-start: 0px;
 }
 .well {
-padding:0px;
+    padding:0px;
+    width:100%;
 }
 .treeScroll{
-    overflow-x:auto !important;
     overflow-y:auto !important;
+    overflow-x:auto !important;
 }
 .saveButtonEnable{
     opacity:1;

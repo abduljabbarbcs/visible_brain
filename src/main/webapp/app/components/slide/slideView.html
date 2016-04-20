@@ -2,7 +2,7 @@
     <div class="sitesView" id="chat-trigger" data-trigger="#chat">
         <a href="#chat" data-ng-click="tree()"></a>
     </div>
-    <aside id="chat" class="treeScroll">
+    <aside id="chat" class='treeScroll'>
         <div class="sidebar-header">
             <h4>{{slide.name}}</h4>
         </div>
@@ -61,7 +61,7 @@
                     <div class="description_body c-overflow">
                         <p class="custom-paragraph">{{description}}</p>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" data-ng-hide="header">
                         <button type="button" class="btn btn-default" ng-class="admin ? 'edit_color' : 'edit_color_disabled'" title="Edit Overlay" data-ng-disabled="!admin" data-ng-click="editOverlay()">Edit</button>
                         <button type="button" class="btn btn-default" ng-class="admin ? 'remove_color' : 'remove_color_disabled'" title="Remove Overlay" data-ng-disabled="!admin" data-ng-click="remove()">Remove</button>
                     </div>

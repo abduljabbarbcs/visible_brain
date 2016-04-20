@@ -17,8 +17,8 @@ visibleBrainApp.config(['$stateProvider', '$urlRouterProvider','cfpLoadingBarPro
                               name: 'homeModule',
                               serie: true,
                               files: [
-                                   '/app/components/home/homeModule.js',
-                                   '/assets/js/functions.js'
+                                   '/app/components/common/functions.js',
+                                   '/app/components/home/homeModule.js'
                               ]
                           }
                       ])
@@ -36,8 +36,8 @@ visibleBrainApp.config(['$stateProvider', '$urlRouterProvider','cfpLoadingBarPro
                               name: 'slideModule',
                               serie: true,
                               files: [
-                                   '/app/components/slide/slideModule.js',
-                                   '/assets/js/functions.js'
+                                   '/app/components/common/functions.js',
+                                   '/app/components/slide/slideModule.js'
                               ]
                           }
                       ])
@@ -55,8 +55,8 @@ visibleBrainApp.config(['$stateProvider', '$urlRouterProvider','cfpLoadingBarPro
                                   name: 'rbacModule',
                                   serie: true,
                                   files: [
-                                       '/app/components/rbac/rbacModule.js',
-                                       '/assets/js/functions.js'
+                                       '/app/components/common/functions.js',
+                                       '/app/components/rbac/rbacModule.js'
                                   ]
                               }
                           ])
