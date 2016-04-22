@@ -33,8 +33,10 @@ public class SlideController {
     }
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public Collection<Slide> getAll() { return slideService.getAllSlides(); }
-
+    public Collection<Slide> getAll() { return slideService.getAllSlides("brain"); }
+    @RequestMapping(value="/getAll",method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<Slide> getAllBodySlides() { return slideService.getAllSlides("body"); }
     @RequestMapping(value="/getMale",method = RequestMethod.GET)
     @ResponseBody
     public Collection<Slide> getAllMale() {

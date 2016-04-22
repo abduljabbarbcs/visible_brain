@@ -1,11 +1,19 @@
 var homeModule = angular.module('homeModule', []);
 
-homeModule.controller('homeController', ['$scope','$location','SlidesFactory','UserLoginFactory','SlideUpdateFactory', function($scope,$location,SlidesFactory,UserLoginFactory,SlideUpdateFactory){
+homeModule.controller('homeController', ['$scope','$location','SlidesFactory','UserLoginFactory','SlideUpdateFactory','BodySlidesFactory',
+function($scope,$location,SlidesFactory,UserLoginFactory,SlideUpdateFactory,BodySlidesFactory){
     $scope.editS ={};
     $scope.editS.edit=undefined;
     var header ='overlay';
     $scope.redirect = function(id){
         $location.path( '/slide/'+id +'/'+header);
+    };
+
+    $scope.getAllBodySlide = function(){
+        var data = BodySlidesFactory.query();
+        data.$promise.then(function(result) {
+            $scope.bodySlides = result;
+        });
     };
     $scope.getAllSlides = function(){
         var data = SlidesFactory.query();
@@ -27,12 +35,15 @@ homeModule.controller('homeController', ['$scope','$location','SlidesFactory','U
        var data = SlideUpdateFactory.update({id:slide.id},slide);
        data.$promise.then(function(result) {
            $scope.getAllSlides();
+            $scope.getAllBodySlide();
            $scope.editS.edit="";
        });
     };
     $scope.cancel = function(){
         $scope.getAllSlides();
+         $scope.getAllBodySlide();
          $scope.editS.edit="";
     };
     $scope.getAllSlides();
+     $scope.getAllBodySlide();
 }]);

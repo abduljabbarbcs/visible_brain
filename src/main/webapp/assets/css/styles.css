@@ -395,6 +395,10 @@ position:relative;
     padding:0px;
     width:100%;
 }
+hr
+{
+    width:97.7% !important;
+}
 .treeScroll{
     overflow-y:auto !important;
     overflow-x:auto !important;

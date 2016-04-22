@@ -13,7 +13,7 @@ public interface SlideService {
 
 //    Slide getSlideByEmail(String email);
 
-    Collection<Slide> getAllSlides();
+    Collection<Slide> getAllSlides(String type);
 
     Collection<Slide> getTypeImages(String type);
 

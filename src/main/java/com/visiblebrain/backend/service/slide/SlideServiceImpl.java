@@ -47,9 +47,9 @@ public class SlideServiceImpl implements SlideService {
 //    }
 
     @Override
-    public Collection<Slide> getAllSlides() {
+    public Collection<Slide> getAllSlides(String type) {
         LOGGER.debug("Getting all users");
-        Collection<Slide> slides= slideRepository.getSlidesByActiveAndType(true,"slide");
+        Collection<Slide> slides= slideRepository.getSlidesByActiveAndType(true,type);
         Collection<Slide> temp = new ArrayList<Slide>();
         for(Slide s : slides)
         {

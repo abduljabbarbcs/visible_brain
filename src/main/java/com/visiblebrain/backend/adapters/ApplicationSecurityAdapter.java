@@ -37,7 +37,6 @@ public class ApplicationSecurityAdapter extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET,"/api/overlay/**").permitAll()
                 .antMatchers("/user/check-login").permitAll()
                 .antMatchers("/api/overlay/**").permitAll()
-//        .antMatchers("/user/activation-send").permitAll()
         .antMatchers("/user/reset-password").permitAll()
         .antMatchers("/user/reset-password-change").permitAll()
         .antMatchers("/user/autologin").access("hasRole('ROLE_ADMIN')")

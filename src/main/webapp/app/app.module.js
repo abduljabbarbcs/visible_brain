@@ -3,6 +3,9 @@ var visibleBrainApp = angular.module('visibleBrainApp', [ 'ngRoute', 'ngResource
 visibleBrainApp.factory('SlidesFactory', function ($resource) {
 	return $resource('/api/slide/:id', {id:'@id'});
 });
+visibleBrainApp.factory('BodySlidesFactory', function ($resource) {
+	return $resource('/api/slide/getAll');
+});
 visibleBrainApp.factory('OverlayFactory', function ($resource) {
 	return $resource('/api/overlay/:id', {id:'@id'});
 });
