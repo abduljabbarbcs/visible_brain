@@ -74,6 +74,9 @@
             scale = this._viewer.viewport._containerInnerSize.x * zoom;
             this._node.setAttribute('transform',
                 'translate(' + p.x + ',' + p.y + ') scale(' + scale + ')');
+                TweenMax.to('svg, path',0.1,{
+                    transformOrigin:'50% 50%'
+                });
         },
 
         // ----------

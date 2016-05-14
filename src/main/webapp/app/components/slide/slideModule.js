@@ -325,11 +325,6 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                        if($scope.treeData[key].length > 0)
                        {
 
-//                            angular.forEach($scope.treeData[key],function(child,key){
-//                                var ul = '<li><span id="sp'+child.id+'"><i class="fa fa-file-image-o"></i></span> <label class="margin-left-label" ng-click="drawOverlay('child')">'+child.name+'</label><ul id="'+child.id+'"></ul></li>';
-//                                $("#"+value.id).append(ul);
-//                                $compile($("#"+value.id))($scope);
-//                            });
                                $timeout(function(){
 
                                 var elem = (document.getElementById(value.id));

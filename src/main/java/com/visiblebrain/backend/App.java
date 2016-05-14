@@ -22,7 +22,7 @@ import java.util.Map;
  */
 @SpringBootApplication
 @EnableSwagger2
- @Controller
+@Controller
 public class App extends SpringBootServletInitializer {
 
     @Override
