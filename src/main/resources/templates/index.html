@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
-<title>Visible Brain</title>
+    <title>Visible Brain</title>
+
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/assets/css/styles.css" rel="stylesheet" />
 
@@ -85,12 +86,9 @@
     </div>
 </div>
 <!--/.container-->
-<footer>
-    <p class="pull-right" th:if="${g_user}">
-        Logged in as: <span th:text="${g_user.email}">my email</span>
-    </p>
+<footer style="position: fixed; bottom: 2px; width: 100%; height: 20px; background-color: #fff;text-align:right;font-size:17px;font-family: bold;font-weight:bold;">
+    Use firefox <img src="/assets/img/firefox.png" style="height:15px !important;" /> and chrome <img src="/assets/img/chrome.png" style="height:15px !important;" /> for best view of this website
 </footer>
-
     <!--<div data-ng-hide="header" class="custom-height-relative">-->
         <!--<div ui-view="" class="custom-height-relative"></div>-->
     <!--</div>-->

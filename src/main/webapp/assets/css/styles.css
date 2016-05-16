@@ -361,6 +361,7 @@ position:relative;
 .remove_color_disabled{
   color:#fff;
   background-color:red !important;
+  opacity:0.2 !important;
 }
 .edit_color{
     color:#fff;
@@ -369,6 +370,7 @@ position:relative;
 .edit_color_disabled{
   color:#fff;
   background-color:green !important;
+  opacity:0.2 !important;
 }
 .margin-right{
     margin-right:5px
