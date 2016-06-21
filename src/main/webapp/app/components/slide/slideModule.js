@@ -69,7 +69,7 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                       .datum(dataPoints)
                       .attr("d", line);
                       html =  html + svg.html();
-
+			svg.remove();
 
 
                 },
@@ -79,17 +79,17 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                         Image: {
                             xmlns: "http://schemas.microsoft.com/deepzoom/2008",
                             Url: "/assets/img/dzi image/"+$scope.slide.slidePath+"_files/",
-                            Format: "jpg",
+                            Format: "jpeg",
                             Overlap: "1",
                             TileSize: "256",
-                            Size:{
-                                Height: "103061",
-                                Width:  "104096"
+                           // Size:{
+                             //   Height: "103061",
+                             //   Width:  "104096"
+                           // }
+                            Size: {
+                                Height: "306939",
+                                Width:  "106259"
                             }
-//                            Size: {
-//                                Height: "306939",
-//                                Width:  "106259"
-//                            }
                         }
                     };
 
@@ -151,21 +151,21 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                     var height =$("#container").height()*13/100;
                     var width = $("#container").width()*3/100;
                     drawObj.dataPoints.push(
-                      [d3.event.clientX-width, d3.event.clientY-height]
+                     [(d3.event.clientX-width), (d3.event.clientY-height)]
                     );
                     if(data.length === 0 )
                     {
                         $scope.overlayPoints.push({
-                            "x":(d3.event.clientX - width),
-                            "y":(d3.event.clientY - height),
+                            "x":((d3.event.clientX - width)/($("#container").width()))*1000,
+                            "y":((d3.event.clientY - height)/($("#container").height()))*800,
                             "start":true
                         });
                         $scope.enable=true;
                     }
                     else{
                         $scope.overlayPoints.push({
-                            "x":(d3.event.clientX - width),
-                            "y":(d3.event.clientY - height)
+                            "x":((d3.event.clientX - width)/($("#container").width()))*1000,
+                            "y":((d3.event.clientY - height)/($("#container").height()))*800
                         });
                     }
                     data.push([(d3.event.x - p.x - width)/scale, (d3.event.y - p.y - height)/scale])
@@ -231,7 +231,7 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                  elt.id = "runtime-overlay";
                  elt.style.opacity = "1";
 
-                 html =  "<svg width='100%' height='100%' viewBox='0 0 " + self.viewer.container.clientWidth + " " + self.viewer.container.clientHeight + "'>";
+                 html =  "<svg width='100%' height='100%' style='position:relative' viewBox='0 0 1000 800'>";
                  $(".highlight").removeClass("highlight");
                  $("#la"+overlayInfo.id).addClass("highlight");
 //                 #("#la"+overlayInfo.id)
@@ -284,15 +284,22 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                        data.push([point.x,point.y])
                      }
                  });
-                 self.viewer.viewport.fitBounds($scope.overlayBounds,false)
-//                 if(overlayInfo.zoom < zoom)
-//                 {
-//                    timer = (zoom - overlayInfo.zoom) * 200 ;
-//                 }
-//                 else
-//                 {
-//                    timer =   (overlayInfo.zoom - zoom) * 100;
-//                 }
+                 self.viewer.viewport.fitBounds($scope.overlayBounds,true)
+                 if(overlayInfo.zoom < zoom)
+                 {
+			if((zoom-overlayInfo.zoom)>=15)
+			{
+				timer=1500;
+			}
+			else
+			{		 
+                    		timer = 1000 ;
+			}
+                 }
+                 else
+                 {
+                    timer =  500;
+                 }
                  $timeout(function(){
                      App.save(data);
                      oldOverlay=true;
@@ -301,8 +308,10 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                            element: elt,
                            location: self.viewer.viewport.getBounds(true)
                        });
+		console.log(zoom);
+			self.viewer.viewport.zoomTo(zoom-0.01);
 
-                 },500 );
+                 },timer );
              }
              $("#full").spectrum({
                  color: "#ECC",
