@@ -1,6 +1,6 @@
 var slideModule = angular.module('slideModule', []);
-slideModule.controller('slideController', ['$scope','$rootScope','$stateParams','SlidesFactory','UserLoginFactory','OverlayFactory','OverlayUpdateFactory','$filter','$compile','$timeout',
- function($scope,$rootScope,$stateParams,SlidesFactory,UserLoginFactory,OverlayFactory,OverlayUpdateFactory,$filter,$compile,$timeout){
+slideModule.controller('slideController', ['$scope','$http','$rootScope','$stateParams','SlidesFactory','UserLoginFactory','OverlayFactory','OverlayUpdateFactory','$filter','$compile','$timeout',
+ function($scope,$http,$rootScope,$stateParams,SlidesFactory,UserLoginFactory,OverlayFactory,OverlayUpdateFactory,$filter,$compile,$timeout){
 
             if($stateParams.header === 'appOverlay')
             {
@@ -82,10 +82,10 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                             Format: "jpeg",
                             Overlap: "1",
                             TileSize: "256",
-                           // Size:{
-                             //   Height: "103061",
-                             //   Width:  "104096"
-                           // }
+//                            Size:{
+//                                Height: "1003061",
+//                                Width:  "1004096"
+//                            }
                             Size: {
                                 Height: "306939",
                                 Width:  "106259"
@@ -156,16 +156,16 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                     if(data.length === 0 )
                     {
                         $scope.overlayPoints.push({
-                            "x":((d3.event.clientX - width)/($("#container").width()))*1000,
-                            "y":((d3.event.clientY - height)/($("#container").height()))*800,
+                            "x":(d3.event.clientX - width),
+                            "y":(d3.event.clientY - height),
                             "start":true
                         });
                         $scope.enable=true;
                     }
                     else{
                         $scope.overlayPoints.push({
-                            "x":((d3.event.clientX - width)/($("#container").width()))*1000,
-                            "y":((d3.event.clientY - height)/($("#container").height()))*800
+                            "x":(d3.event.clientX - width),
+                            "y":(d3.event.clientY - height)
                         });
                     }
                     data.push([(d3.event.x - p.x - width)/scale, (d3.event.y - p.y - height)/scale])
@@ -225,13 +225,13 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
              $scope.editData;
              oldOverlay=false;
              $scope.drawOverlay = function(overlayInfo){
-
-                 var elt = document.createElement("div");
+                  $scope.overlayZoom = overlayInfo.zoom;
+                 elt = document.createElement("div");
                  elt.className = "runtime-overlay";
                  elt.id = "runtime-overlay";
                  elt.style.opacity = "1";
 
-                 html =  "<svg width='100%' height='100%' style='position:relative' viewBox='0 0 1000 800'>";
+                 html =  "<svg width='100%' height='100%' style='position:relative' viewBox='0 0 " + overlayInfo.viewBoxWidth + " "+ overlayInfo.viewBoxHeight + "'>";
                  $(".highlight").removeClass("highlight");
                  $("#la"+overlayInfo.id).addClass("highlight");
 //                 #("#la"+overlayInfo.id)
@@ -284,35 +284,37 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                        data.push([point.x,point.y])
                      }
                  });
-                 self.viewer.viewport.fitBounds($scope.overlayBounds,true)
+                 self.viewer.viewport.fitBounds($scope.overlayBounds,true);
                  if(overlayInfo.zoom < zoom)
                  {
-			if((zoom-overlayInfo.zoom)>=15)
-			{
-				timer=1500;
-			}
-			else
-			{		 
-                    		timer = 1000 ;
-			}
+                      timer = 1000 ;
                  }
                  else
                  {
                     timer =  500;
                  }
                  $timeout(function(){
-                     App.save(data);
-                     oldOverlay=true;
-                     elt.innerHTML= html + "</svg>";
-                     self.viewer.addOverlay({
-                           element: elt,
-                           location: self.viewer.viewport.getBounds(true)
-                       });
-		console.log(zoom);
-			self.viewer.viewport.zoomTo(zoom-0.01);
-
+                      App.save(data);
+                      oldOverlay=true;
+                      elt.innerHTML= html + "</svg>";
+                      self.viewer.addOverlay({
+                            element: elt,
+                            location: self.viewer.viewport.getBounds(true)
+                      });
                  },timer );
-             }
+//                 $.ajax({
+//                        url:self.viewer.viewport.fitBounds($scope.overlayBounds,true),
+//                        success:function(){
+//                               moveTofitBounds()
+//                     }
+//                 })
+//                 $http.get(self.viewer.viewport.fitBounds($scope.overlayBounds,true)).success(function(){
+//                    moveTofitBounds();
+//                 });
+
+//                    moveTofitBounds(self.viewer.viewport.fitBounds($scope.overlayBounds,true));
+
+            }
              $("#full").spectrum({
                  color: "#ECC",
                  showInput: true,
@@ -468,7 +470,7 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                              $scope.jsonData = {
                                 "name":$scope.overlayInfo.name,
                                 "description":$scope.overlayInfo.description,
-                                "zoom":$scope.zoom,
+                                "zoom":zoom,
                                 "scale":$scope.scale,
                                 "color":$scope.color,
                                 "lineWidth":$scope.lineWidth,
@@ -476,6 +478,8 @@ slideModule.controller('slideController', ['$scope','$rootScope','$stateParams',
                                 "y":$scope.bounds.y,
                                 "width":$scope.bounds.width,
                                 "height":$scope.bounds.height,
+                                "viewBoxWidth":self.viewer.container.clientWidth,
+                                "viewBoxHeight":self.viewer.container.clientHeight,
                                 "overlayPoints":$scope.overlayPoints,
                                 "overlayInfo":{
                                     "id":$scope.overlayInfo.parent

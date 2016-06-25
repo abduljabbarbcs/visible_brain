@@ -195,6 +195,28 @@ public class OverlayInfo extends BaseEntity{
     public void setHeight(double height) {
         this.height = height;
     }
+
+    public double getViewBoxHeight() {
+        return viewBoxHeight;
+    }
+
+    public void setViewBoxHeight(double viewBoxHeight) {
+        this.viewBoxHeight = viewBoxHeight;
+    }
+
+    public double getViewBoxWidth() {
+        return viewBoxWidth;
+    }
+
+    public void setViewBoxWidth(double viewBoxWidth) {
+        this.viewBoxWidth = viewBoxWidth;
+    }
+
+    @Column(name = "viewBoxHeight", nullable = false)
+    private double viewBoxHeight;
+
+    @Column(name = "viewBoxWidth", nullable = false)
+    private double viewBoxWidth ;
     //    public Image getImage() {
 //        return image;
 //    }

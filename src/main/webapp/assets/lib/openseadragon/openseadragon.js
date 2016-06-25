@@ -15130,7 +15130,7 @@ $.Viewport.prototype = /** @lends OpenSeadragon.Viewport.prototype */{
      * @param {Object} options (immediately=false, constraints=false)
      * @return {OpenSeadragon.Viewport} Chainable.
      */
-    _fitBounds: function( bounds, options ) {
+    _fitBounds: function( bounds, options) {
         options = options || {};
         var immediately = options.immediately || false;
         var constraints = options.constraints || false;
@@ -15201,7 +15201,8 @@ $.Viewport.prototype = /** @lends OpenSeadragon.Viewport.prototype */{
             this._containerInnerSize.x / newBounds.width
         );
 
-        return this.zoomTo( newZoom, referencePoint, immediately );
+        return this.zoomTo( newZoom, referencePoint, immediately);
+
     },
 
     /**
@@ -15214,7 +15215,7 @@ $.Viewport.prototype = /** @lends OpenSeadragon.Viewport.prototype */{
         return this._fitBounds( bounds, {
             immediately: immediately,
             constraints: false
-        } );
+        });
     },
 
     /**
@@ -15328,7 +15329,7 @@ $.Viewport.prototype = /** @lends OpenSeadragon.Viewport.prototype */{
      * @return {OpenSeadragon.Viewport} Chainable.
      * @fires OpenSeadragon.Viewer.event:zoom
      */
-    zoomTo: function( zoom, refPoint, immediately ) {
+    zoomTo: function( zoom, refPoint, immediately) {
 
         this.zoomPoint = refPoint instanceof $.Point &&
             !isNaN(refPoint.x) &&
@@ -15362,7 +15363,9 @@ $.Viewport.prototype = /** @lends OpenSeadragon.Viewport.prototype */{
             });
         }
 
-        return this;
+       return this;
+
+
     },
 
     /**
